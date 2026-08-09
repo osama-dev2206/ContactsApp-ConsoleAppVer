@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clsmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clsmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clssearchcontactscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clssearchcontactscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5180971-6937-1659-F759-0B85E52AFAAF}|..\\Contacts App - Bussiness Layer\\Contacts App - Bussiness Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - bussiness layer\\clscontactbussinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clsscreenutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clsscreenutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsContactBussinessLogic.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsContactBussinessLogic.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Bussiness Layer\\clsContactBussinessLogic.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsContactBussinessLogic.cs",
+              "RelativeToolTip": "..\\Contacts App - Bussiness Layer\\clsContactBussinessLogic.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAhwFsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T20:16:04.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsMainMenu.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsMainMenu.cs",
+              "RelativeDocumentMoniker": "clsMainMenu.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsMainMenu.cs",
+              "RelativeToolTip": "clsMainMenu.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAvwD4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T20:03:51.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsSearchContactScreen.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsSearchContactScreen.cs",
+              "RelativeDocumentMoniker": "clsSearchContactScreen.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsSearchContactScreen.cs",
+              "RelativeToolTip": "clsSearchContactScreen.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAhwC4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T20:04:14.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clsScreenUtils.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsScreenUtils.cs",
+              "RelativeDocumentMoniker": "clsScreenUtils.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsScreenUtils.cs",
+              "RelativeToolTip": "clsScreenUtils.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T20:05:09.851Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
