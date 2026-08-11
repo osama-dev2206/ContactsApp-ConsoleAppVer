@@ -9,6 +9,7 @@ namespace Contacts_App___Bussiness_Layer
     // partial class allows you to divide your logic into many classes files 
     public partial class clsContact
     {
+        // Contact Properties // 
         public int ContactID { get; private set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -36,26 +37,12 @@ namespace Contacts_App___Bussiness_Layer
             DateOfBirth = dateOfBirth;
             CountryID = countryID;
             ImagePath = imagePath;
-            Mode = enMode.Update;
+
+            Mode = enMode.Update; // the object is ready to update  
         }
 
-
-        // Constructor for intilization only 
-        public clsContact()
-        {
-            ContactID = -1;
-            FirstName = string.Empty;
-            LastName = string.Empty;
-            Email = string.Empty;
-            Phone = string.Empty;
-            Address = string.Empty;
-            DateOfBirth = DateTime.MinValue;
-            CountryID = 0;
-            ImagePath = string.Empty;
-        }
-
- 
-
+        /// -----------------------------------------------------------------------------///
+        
         public static clsContact? GetContactById(int ContactId ) // #1 
         {
         

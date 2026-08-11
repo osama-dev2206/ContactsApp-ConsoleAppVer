@@ -50,7 +50,7 @@ namespace Contacts_App___Data_Access_Layer
                     DateOfBirth = (DateTime)Reader["DateOfBirth"];
                     CountryID = (int)Reader["CountryID"];
 
-                    if(Reader["ImagePath"] != DBNull.Value) // ifthe image path isn't null then add the value 
+                    if(Reader["ImagePath"] != DBNull.Value) // if the image path isn't null then add the value 
                     {
                         ImagePath = (string)Reader["ImagePath"]; // if it is null it will make an execption 
                     }
