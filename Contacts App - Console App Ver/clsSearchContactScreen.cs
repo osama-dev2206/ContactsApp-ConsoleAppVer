@@ -12,22 +12,19 @@ namespace Contacts_App___Console_App_Ver
 
         private static void ImplementTheSearch(int contactID)
         {
-            clsContactBussinessLogic.enDbReturnRecordsStatus Status = clsContactBussinessLogic.enDbReturnRecordsStatus.none;
+            
 
-            clsContactBussinessLogic Contact = clsContactBussinessLogic.GetContactById(ContactId: contactID, out Status);
+            clsContact?Contact = clsContact.GetContactById(ContactId: contactID);
 
-            if(Status == clsContactBussinessLogic.enDbReturnRecordsStatus.success)
+            if(Contact != null)
             {
                 clsScreenUtils.DisplayContactInfo(ref Contact);
             }
-            else if (Status == clsContactBussinessLogic.enDbReturnRecordsStatus.paramtersError)
+            else 
             {
-                Console.WriteLine("\a\t\t\t\tParamter Error");
+                Console.WriteLine($"\n\n\a\t\t\t\tThe Record With Id: {contactID} Isn't Existing !");
             }
-            else if(Status == clsContactBussinessLogic.enDbReturnRecordsStatus.failure)
-            {
-                Console.WriteLine("\t\t\t\tFailed To Get Data From Database!");
-            }
+       
         }
 
 
@@ -37,9 +34,9 @@ namespace Contacts_App___Console_App_Ver
             clsScreenUtils.PrintMenuOption("Search Contact By Id"); // show header
 
             Console.Write("\nEnter The Contact ID: ");
-            int ID  ;
+             int ID ;
 
-            while ( ! int.TryParse(Console.ReadLine(), out ID) ) // is the input isn't correct 
+            while (!int.TryParse(Console.ReadLine(), out ID)) // is the input isn't correct 
             {
                 Console.WriteLine($"\t\t\t\t\aThe Id Isn't Valid!\n\t\t\t\tEnter A Vaild Id!");
             }

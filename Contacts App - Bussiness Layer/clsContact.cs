@@ -6,8 +6,8 @@ using Contacts_App___Data_Access_Layer; // import the data access layer library
 
 namespace Contacts_App___Bussiness_Layer
 {
-    // partial class allows you to divide your logic into many class files 
-    public partial class clsContactBussinessLogic
+    // partial class allows you to divide your logic into many classes files 
+    public partial class clsContact
     {
         public int ContactID { get; private set; }
         public string FirstName { get; set; }
@@ -19,18 +19,14 @@ namespace Contacts_App___Bussiness_Layer
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
 
-        // paramterized constructor 
-        public clsContactBussinessLogic(
-    int contactID,
-    string firstName,
-    string lastName,
-    string email,
-    string phone,
-    string address,
-    DateTime dateOfBirth,
-    int countryID,
-    string imagePath)
-        {
+        enum enMode { Update=1 , Add=2 , Remove=3 }
+        private enMode Mode = enMode.Update;
+
+        // paramterized constructor -- private cuz i don't need anyone to add id manually i used it to get record from db only (find)
+        private clsContact(
+    int contactID,string firstName, string lastName, string email,string phone,
+    string address, DateTime dateOfBirth,int countryID,string imagePath)
+   {
             ContactID = contactID;
             FirstName = firstName;
             LastName = lastName;
@@ -40,12 +36,14 @@ namespace Contacts_App___Bussiness_Layer
             DateOfBirth = dateOfBirth;
             CountryID = countryID;
             ImagePath = imagePath;
+            Mode = enMode.Update;
         }
 
+
         // Constructor for intilization only 
-        private clsContactBussinessLogic()
+        public clsContact()
         {
-            ContactID = 0;
+            ContactID = -1;
             FirstName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
@@ -56,16 +54,11 @@ namespace Contacts_App___Bussiness_Layer
             ImagePath = string.Empty;
         }
 
-        public  enum enDbReturnRecordsStatus { none =0 ,success=1 , failure=2 , paramtersError =3 }
+ 
 
-        public static clsContactBussinessLogic GetContactById(int ContactId , out enDbReturnRecordsStatus DbStatus)
+        public static clsContact? GetContactById(int ContactId ) // #1 
         {
-            DbStatus = enDbReturnRecordsStatus.none;
-            if (!int.TryParse(ContactId.ToString(), out _))
-            {
-                DbStatus = enDbReturnRecordsStatus.paramtersError;
-                return new clsContactBussinessLogic(); // if the contact id isn't valid num
-            }
+        
 
              string FirstName = ""; string LastName = ""; string Email = "";
             string Phone = ""; string Address = ""; string? ImagePath = "";  DateTime DateOfBirth = DateTime.Now;
@@ -78,16 +71,13 @@ namespace Contacts_App___Bussiness_Layer
                 Email:ref Email, Phone: ref Phone, Address: ref Address,
                 DateOfBirth: ref DateOfBirth, CountryID: ref CountryID, ImagePath : ref ImagePath);
 
-            if (ReturnDataStatus)
+            if (ReturnDataStatus) // if the record was founded then return the obj with info 
             {
-                DbStatus = enDbReturnRecordsStatus.success;
-            }
-            else
-            {
-                DbStatus = enDbReturnRecordsStatus.failure;
+                return new clsContact(ContactId, FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryID, ImagePath);
             }
 
-          return new clsContactBussinessLogic(ContactId, FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryID, ImagePath);
+
+             return null; // the record isn't exisiting 
 
         }
 

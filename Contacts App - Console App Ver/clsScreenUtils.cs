@@ -20,7 +20,7 @@ namespace Contacts_App___Console_App_Ver
 
 
 
-        static public void DisplayContactInfo(ref clsContactBussinessLogic Contact)
+        static public void DisplayContactInfo(ref clsContact Contact)
         {
             Console.WriteLine("\n\n\n");
             Console.WriteLine("╔══════════════════════════════════════════╗");

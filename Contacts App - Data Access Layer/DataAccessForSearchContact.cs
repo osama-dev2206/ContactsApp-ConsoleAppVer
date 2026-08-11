@@ -23,7 +23,7 @@ namespace Contacts_App___Data_Access_Layer
         }
 
 
-        // return true if the command excuted successfully && there are record
+        // return true if the command excuted successfully && there is record
         public static bool CheckContactOnDb(ref int ContactID, ref string FirstName, ref string LastName
             , ref string Email, ref string Phone, ref string Address, ref DateTime DateOfBirth,
             ref int CountryID,
@@ -50,11 +50,11 @@ namespace Contacts_App___Data_Access_Layer
                     DateOfBirth = (DateTime)Reader["DateOfBirth"];
                     CountryID = (int)Reader["CountryID"];
 
-                    try 
+                    if(Reader["ImagePath"] != DBNull.Value) // ifthe image path isn't null then add the value 
                     {
                         ImagePath = (string)Reader["ImagePath"]; // if it is null it will make an execption 
                     }
-                    catch
+                    else
                     {
                         ImagePath = "";
                     }
