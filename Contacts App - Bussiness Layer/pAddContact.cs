@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Contacts_App___Bussiness_Layer
 {
-    public partial class clsContact
+    public partial class clsContact // part of clsContact , Bussiness Logic 
     {
 
-        // Constructor for Adding New Contact - the paramters are the mandotrory not null attributes that must to provided by user 
+        // Constructor for Adding New Contact - these paramters are the mandotrory not null , these attributes must be provided by user 
         public clsContact(string firstName, string LastName, string Email, string Phone, string Address, DateTime DateOfBirth, int countryID)
         {
             ContactID = -1;

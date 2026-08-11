@@ -31,6 +31,7 @@ namespace Contacts_App___Data_Access_Layer
         {
             bool IsExist = false;
 
+#pragma warning disable CS0168 // Variable is declared but never used
             try
             {
                 clsDbSettings.DbConnection.Open();
@@ -71,6 +72,7 @@ namespace Contacts_App___Data_Access_Layer
             {
                 DbConnection.Close();
             }
+#pragma warning restore CS0168 // Variable is declared but never used
 
             return IsExist;
 
