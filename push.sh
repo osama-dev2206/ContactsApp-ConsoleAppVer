@@ -21,6 +21,16 @@ else
     git remote add origin "$REMOTE"
 fi
 
+# Ask for commit message
+echo
+read -p "Enter your commit message: " COMMIT_MESSAGE
+
+if [ -z "$COMMIT_MESSAGE" ]; then
+    echo "Error: Commit message cannot be empty."
+    exit 1
+fi
+
+echo
 echo "==> Fetching remote..."
 git fetch origin
 
@@ -31,19 +41,32 @@ else
     git checkout -b main
 fi
 
-echo "==> Checking status..."
-git status
-
 echo "==> Adding files..."
 git add .
 
 echo "==> Creating commit..."
-git commit -m "Update Contacts App" || echo "No new changes to commit."
+git commit -m "$COMMIT_MESSAGE"
+
+if [ $? -ne 0 ]; then
+    echo "No changes to commit or commit failed."
+    exit 1
+fi
 
 echo "==> Pulling remote changes..."
 git pull --rebase origin main
 
+if [ $? -ne 0 ]; then
+    echo "Pull failed. Resolve the conflict manually."
+    exit 1
+fi
+
 echo "==> Pushing to GitHub..."
 git push -u origin main
 
-echo "==> Done!"
+if [ $? -ne 0 ]; then
+    echo "Push failed."
+    exit 1
+fi
+
+echo
+echo "==> Successfully pushed to GitHub!"
