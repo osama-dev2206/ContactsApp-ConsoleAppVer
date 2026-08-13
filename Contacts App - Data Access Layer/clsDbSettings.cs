@@ -60,6 +60,7 @@ DateTime DateOfBirth, int CountryID, string ImagePath)
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("CountryID", CountryID);
+            cmd.Parameters.AddWithValue("@ContactID", ContactID);
             if (ImagePath != null || ImagePath != string.Empty)
             {
                 cmd.Parameters.AddWithValue("@ImagePath", ImagePath);

@@ -63,15 +63,18 @@ namespace Contacts_App___Console_App_Ver
                    Console.WriteLine("\n\n\t\t\t\tUpdated Successfully!");
 
                 else
-                    Console.WriteLine("\n\a\t\t\t\t\tFailed To Update");
+                    Console.WriteLine("\n\n\a\t\t\t\t\tFailed To Update");
             }
 
             else // the contact isn't existing to update 
             {
-                Console.WriteLine("\n\a\t\t\t\t\tFailed To Update");
+                Console.WriteLine("\n\n\a\t\t\t\t\tFailed To Update");
             }
 
 
         }
+
+
+
     }
 }
