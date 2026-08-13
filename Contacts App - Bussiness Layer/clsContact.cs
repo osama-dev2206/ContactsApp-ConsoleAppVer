@@ -21,7 +21,8 @@ namespace Contacts_App___Bussiness_Layer
         public string ImagePath { get; set; }
 
         enum enMode { Update=1 , Add=2 , Remove=3 }
-        private enMode Mode = enMode.Update;
+
+        private enMode _Mode = enMode.Update;
 
         // paramterized constructor -- private cuz i don't need anyone to add id manually i used it to get record from db only (find)
         private clsContact(
@@ -38,7 +39,7 @@ namespace Contacts_App___Bussiness_Layer
             CountryID = countryID;
             ImagePath = imagePath;
 
-            Mode = enMode.Update; // the object is ready to update  
+            _Mode = enMode.Update; // the object is ready to update  
         }
 
         /// -----------------------------------------------------------------------------///
@@ -48,7 +49,7 @@ namespace Contacts_App___Bussiness_Layer
         
 
              string FirstName = ""; string LastName = ""; string Email = "";
-            string Phone = ""; string Address = ""; string? ImagePath = "";  DateTime DateOfBirth = DateTime.Now;
+            string Phone = ""; string Address = ""; string ImagePath = "";  DateTime DateOfBirth = DateTime.Now;
             int CountryID = 0;
 
 

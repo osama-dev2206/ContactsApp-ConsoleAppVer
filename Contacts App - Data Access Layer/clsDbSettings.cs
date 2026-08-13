@@ -13,6 +13,10 @@ namespace Contacts_App___Data_Access_Layer
 
         static public SqlConnection DbConnection = new SqlConnection(clsDbSettings.ConnectionString);
 
+        public static bool CheckNumOfAffectedRows(int NumOfAffectedRows)
+        {
+            return (NumOfAffectedRows > 0);
+        }
 
 
     }
