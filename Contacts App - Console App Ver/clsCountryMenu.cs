@@ -23,7 +23,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void ShowFindCountryByNameScreen()
         {
-
+            clsCountryByNameScreen.ShowFindByName();
         }
 
         private static void ShowIsCountryExistsScreen()

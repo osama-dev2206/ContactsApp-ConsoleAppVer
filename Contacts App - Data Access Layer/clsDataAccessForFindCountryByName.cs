@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,10 +9,9 @@ namespace Contacts_App___Data_Access_Layer
     {
         static private string Query() 
         {
-            return @"Select  * 
+            return @"Select Countries.CountryID 
               From Countries
-                Where Countries.CountryName like Lower('% @CountryName %');;
-              ;";
+                Where Lower(Countries.CountryName) = Lower(@CountryName ) ;";
         }
 
 
@@ -20,8 +20,30 @@ namespace Contacts_App___Data_Access_Layer
             bool res = false;
             try
             {
-                
+                clsDbSettings.DbConnection.Open();
+                SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
+                cmd.Parameters.AddWithValue("@CountryName", CountryName);
+
+                object reader = cmd.ExecuteScalar();
+
+                if (reader != null && int.TryParse(reader.ToString(), out int Country_ID) )
+                {
+                    CountryID = Country_ID;
+                    res=true;
+                }
             }
+            catch (Exception ex)
+            {
+                res = false;
+            }
+
+            finally
+            {
+                clsDbSettings.DbConnection.Close();
+            }
+
+            return res; 
+
         }
 
 

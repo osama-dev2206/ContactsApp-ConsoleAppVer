@@ -6,6 +6,13 @@
       "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforfindcountrybyname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B5180971-6937-1659-F759-0B85E52AFAAF}|..\\Contacts App - Bussiness Layer\\Contacts App - Bussiness Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - bussiness layer\\clscountries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clscountrybynamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clscountrybynamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clscountrymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clscountrymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -17,8 +24,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsCountryByNameScreen.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryByNameScreen.cs",
+              "RelativeDocumentMoniker": "clsCountryByNameScreen.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryByNameScreen.cs",
+              "RelativeToolTip": "clsCountryByNameScreen.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T16:29:09.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsCountries.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsCountries.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Bussiness Layer\\clsCountries.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsCountries.cs",
+              "RelativeToolTip": "..\\Contacts App - Bussiness Layer\\clsCountries.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBcAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T16:22:15.562Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -27,20 +60,20 @@
               "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
               "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
               "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAIAwwBQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-14T16:05:27.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "clsCountryMenu.cs",
               "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryMenu.cs",
               "RelativeDocumentMoniker": "clsCountryMenu.cs",
               "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryMenu.cs",
               "RelativeToolTip": "clsCountryMenu.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAiwBkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAASwBkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-14T15:51:30.403Z",
               "EditorCaption": ""
