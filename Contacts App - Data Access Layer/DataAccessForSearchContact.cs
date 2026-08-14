@@ -61,9 +61,9 @@ namespace Contacts_App___Data_Access_Layer
                     }
 
                     IsExist = true;
-                    Reader.Close();
                 }
 
+                Reader.Close();
             }
             catch (Exception ex)
             {

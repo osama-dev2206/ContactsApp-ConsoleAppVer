@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using Microsoft.Data.SqlClient;
@@ -10,7 +9,13 @@ namespace Contacts_App___Data_Access_Layer
     {
         static string Query()
         {
-            return @"Select * From Contacts;";
+            return @"Select Contacts.FirstName ,Contacts.LastName ,Contacts.Email ,
+              Contacts.Phone ,Contacts.Address 
+            ,Contacts.DateOfBirth
+          , Countries.CountryName
+            From Contacts
+               Inner Join Countries
+             On Contacts.CountryID = Countries.CountryID;";
         }
 
         public static DataTable GetAllContactsFromDbInDT()
@@ -23,10 +28,11 @@ namespace Contacts_App___Data_Access_Layer
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if(reader.HasRows) // returns T if the result has one or more row 
+                if(reader.HasRows) // returns T if the result set  has one or more row 
                 {
-                    dt.Load(reader); 
+                    dt.Load(reader);  // load the result set to data table 
                 }
+
                 reader.Close();
             }
             catch (Exception ex) 
@@ -38,6 +44,7 @@ namespace Contacts_App___Data_Access_Layer
                 clsDbSettings.DbConnection.Close();
             }
 
+            return dt;
         }
         
     }

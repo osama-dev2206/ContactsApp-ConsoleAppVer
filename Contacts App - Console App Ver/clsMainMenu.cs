@@ -47,7 +47,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void ShowListContactScreen()//5 
         {
-
+            clsGetAllContactsScreen.PrintAllContacts(); 
         }
 
         private static void ShowIsExistContactScreen()//6 
