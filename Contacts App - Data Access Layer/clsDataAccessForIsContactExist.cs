@@ -22,8 +22,9 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
+                cmd.Parameters.AddWithValue("@ContactID", ContactID);
 
-                object Ereader = cmd.ExecuteScalar();
+                object Ereader = cmd.ExecuteScalar(); 
                 if (Ereader != null && Ereader.ToString() == "T" )
                 {
                     result=true; 

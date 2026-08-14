@@ -52,7 +52,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void ShowIsExistContactScreen()//6 
         {
-
+            clsIsContactExitsScreen.ShowIsContactExistsScreen();
         }
 
         private static void ShowReturnMessage()
