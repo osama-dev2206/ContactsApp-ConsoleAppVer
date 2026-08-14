@@ -7,7 +7,7 @@ namespace Contacts_App___Console_App_Ver
 {
     internal static class clsMainMenu 
     {
-        enum enMenuOption { Search=1,Add=2 ,Update=3,Delete=4 ,List =5 , IsExits=6 }
+        enum enMenuOption { SearchContact=1,AddContact=2 ,UpdateContact=3,DeleteContact=4 ,ListContact =5 , IsContactExisits=6 , CountryMenu=7 }
    
         private static void DisplayMainMenuOptions()
         {
@@ -22,7 +22,8 @@ namespace Contacts_App___Console_App_Ver
             Console.WriteLine($"{padding}[4] Delete Contact.");
             Console.WriteLine($"{padding}[5] List Contacts.");
             Console.WriteLine($"{padding}[6] Is Contact Exist?");
-            Console.WriteLine($"{padding}[7] End Program.");
+            Console.WriteLine($"{padding}[7] Countries Main Menu");
+            Console.WriteLine($"{padding}[8] End Program.");
             Console.WriteLine($"{padding}=========================================");
         }
 
@@ -55,6 +56,11 @@ namespace Contacts_App___Console_App_Ver
             clsIsContactExitsScreen.ShowIsContactExistsScreen();
         }
 
+        private static void ShowCountryMenu()//7 
+        {
+            clsCountryMenu.ShowMainScreen();
+        }
+
         private static void ShowReturnMessage()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed; // set the warn to red 
@@ -68,41 +74,44 @@ namespace Contacts_App___Console_App_Ver
             Console.Clear();
             switch (option)
             {
-                case enMenuOption.Search:
+                case enMenuOption.SearchContact:
                     ShowFindContactScreen();
                     ShowReturnMessage();
                     break;
 
-                case enMenuOption.Add:
+                case enMenuOption.AddContact:
                     ShowAddContactScreen();
                     ShowReturnMessage();
                     break;
-                case enMenuOption.Update:
+                case enMenuOption.UpdateContact:
                     ShowUpdateContactScreen();
                     ShowReturnMessage();
                     break;
 
-                case enMenuOption.Delete:
+                case enMenuOption.DeleteContact:
                     ShowDeleteContactScreen();
                     ShowReturnMessage();
                     break;
 
-                case enMenuOption.List:
+                case enMenuOption.ListContact:
                     ShowListContactScreen();
                     ShowReturnMessage();
                     break;
 
-                    case enMenuOption.IsExits:
+                    case enMenuOption.IsContactExisits:
                     ShowIsExistContactScreen();
                     ShowReturnMessage();
                     break;
 
+                case enMenuOption.CountryMenu:
+                    ShowCountryMenu();
+                    break;
             }
         }
 
         private static bool CheckOption(int option)
         {
-            return (option >= 1 && option <=7);
+            return (option >= 1 && option <=8);
         }
         
         public static void ShowMainScreen()
@@ -119,7 +128,7 @@ namespace Contacts_App___Console_App_Ver
                 try { Option = Convert.ToInt32(Console.ReadLine()); }
                 catch { Option = -2; }
 
-                if(Option==7)
+                if(Option==8)
                 {
                     Console.Clear();
                     Console.WriteLine("\n END :)");
@@ -129,7 +138,7 @@ namespace Contacts_App___Console_App_Ver
                 ShowScreenAccordingToOption((enMenuOption)Option);  // user choosed right option 
 
                 // the menu will be shown again if the option isn't valid num of out of range 
-            } while(!CheckOption(Option) || Option != 7);
+            } while(!CheckOption(Option) || Option != 8);
 
            
             
