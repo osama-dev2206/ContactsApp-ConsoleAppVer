@@ -7,9 +7,10 @@ namespace Contacts_App___Bussiness_Layer
 {
     public class clsCountries
     {
-        public int CountryID {  get; private set; }
+        public int  CountryID {  get; private set; }
         public string  CountryName { get; private set; }
         enum enMode { update = 1, add = 2 };
+
         enMode _mode = enMode.update;
 
         private clsCountries(int CountryId , string name )
@@ -21,8 +22,17 @@ namespace Contacts_App___Bussiness_Layer
         }
 
 
+        public  clsCountries( string name)
+        {
+            this.CountryName = name;
+
+            _mode = enMode.add;
+        }
+
         public static clsCountries ? FindCountryByName(string CountryName )
         {
+            if (CountryName == null) return null;
+
             CountryName = CountryName.Trim();
 
             int countryID = 0;
@@ -36,6 +46,66 @@ namespace Contacts_App___Bussiness_Layer
             else return null; 
         }
 
+
+        public static bool IsCountryExist(string ?CountryName)
+        {
+            if(CountryName== null) return false;
+            return clsDataAccessForCheckCountryByName.CheckCountryByName(CountryName);
+        }
+
+        public static clsCountries? FindCountryByID(int CountryID)
+        {
+            if (!int.TryParse(CountryID.ToString(), out _ )) return null;
+
+            string ? Name = "";
+            bool res = clsDataAccessForFindCountryByID.FindCountryByID(CountryID, ref Name);
+
+            if (res) 
+                return new clsCountries(CountryID, Name);
+            else 
+                return null; 
+
+        }
+
+        public static bool IsCountryExistByID(int CountryID)
+        {
+            if(! int.TryParse (CountryID.ToString() , out _ )) return false;
+            return clsDataAccessForIsCountryExisitById.IsCountryExistByID(CountryID);
+        }
+
+        private bool AddNewCountry()
+        {
+            int id = clsDataAccessForAddCountry.AddNewCountryToDb(this.CountryName);
+            return (id != -1); // if the id !=-1 then the record has inserted successfully 
+        }
+
+        private bool UpdateCountry()
+        {
+            return false; 
+        }
+
+        public bool Save()
+        {
+            switch( this. _mode )
+            {
+                case enMode.add:
+                    if (AddNewCountry())
+                    {
+                        _mode = enMode.update; // rest mode to default 
+                        return true;
+                    }
+                    break; 
+
+                    case enMode.update:
+                    if (UpdateCountry())
+                    {
+                        return true; 
+                    }
+                    break;
+            }
+
+            return false;
+        }
 
 
     }

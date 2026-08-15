@@ -6,18 +6,25 @@ namespace Contacts_App___Console_App_Ver
 {
     internal static class clsCountryMenu
     {
-        enum enMenuOption { FindCountryByName = 1, IsCountryExistsByName=2  }
+        enum enMenuOption { FindCountryByName = 1, IsCountryExistsByName=2 , FindCountryByID=3 , IsCountryExistsByID=4 , 
+            AddCountry=5 , UpdateCountry=6 , GetAllCountries=7 ,DeleteCountry = 8 }
 
         private static void DisplayMainMenuOptions()
         {
             string padding = "".PadRight(37);
 
             Console.WriteLine($"{padding}=========================================");
-            Console.WriteLine($"\t\t{padding}Main Menu");
+            Console.WriteLine($"\t\t{padding}Countries Menu");
             Console.WriteLine($"{padding}=========================================");
             Console.WriteLine($"{padding}[1] Find Country By Name.");
-            Console.WriteLine($"{padding}[2] Is Country Exists(By Name).");
-            Console.WriteLine($"{padding}[3] Back To Main Menu.");
+            Console.WriteLine($"{padding}[2] Is Country Exist(By Name).");
+            Console.WriteLine($"{padding}[3] Find Country By ID.");
+            Console.WriteLine($"{padding}[4] Is Country Exists(By ID).");
+            Console.WriteLine($"{padding}[5] Add Country.");
+            Console.WriteLine($"{padding}[6] Update Country.");
+            Console.WriteLine($"{padding}[7] Get All Countries.");
+            Console.WriteLine($"{padding}[8] Delete Country.");
+            Console.WriteLine($"{padding}[9] Back To Main Menu.");
             Console.WriteLine($"{padding}=========================================");
         }
 
@@ -26,7 +33,37 @@ namespace Contacts_App___Console_App_Ver
             clsCountryByNameScreen.ShowFindByName();
         }
 
-        private static void ShowIsCountryExistsScreen()
+        private static void ShowIsCountryExistsScreenByName()
+        {
+            clsCheckExistenceScreen.ShowIsCountryExistScreen();
+        }
+
+        private static void ShowIsCountryExisitsScreenByID()
+        {
+            clsIsCountryExistByIDScreen.ShowIsCountryExistScreen();
+        }
+
+        private static void ShowFindCountryByIDScreen()
+        {
+            clsFindCountryByIDScreen.ShowFindByIDScreen();
+        }
+
+        private static void AddCountry()
+        {
+            clsAddCountryScreen.ShowAddCountryScreen();
+        }
+
+        private static void UpdateCountry()
+        {
+
+        }
+
+        private static void GetAllCountries()
+        {
+
+        }
+
+        private static void DeleteCountry()
         {
 
         }
@@ -34,7 +71,7 @@ namespace Contacts_App___Console_App_Ver
         private static void ShowReturnMessage()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed; // set the warn to red 
-            Console.WriteLine("\n\n\t\t\t\tPress Any Key To Return To Main Menu");
+            Console.WriteLine("\n\n\t\t\t\tPress Any Key To Return To Countries Menu");
             Console.ReadKey(); // pause the screen 
             Console.ForegroundColor = ConsoleColor.White; // rest colot 
         }
@@ -50,17 +87,42 @@ namespace Contacts_App___Console_App_Ver
                     break;
 
                 case enMenuOption.IsCountryExistsByName:
-                     ShowIsCountryExistsScreen();
+                     ShowIsCountryExistsScreenByName();
                     ShowReturnMessage();
                     break;
+
+                case enMenuOption.IsCountryExistsByID: 
+                    ShowIsCountryExisitsScreenByID();
+                    ShowReturnMessage();
+                    break;
+
+                case enMenuOption.FindCountryByID:
+                    ShowFindCountryByIDScreen();
+                    ShowReturnMessage();
+                    break;
+
+                case enMenuOption.AddCountry:
+                    AddCountry();
+                    ShowReturnMessage();
+                    break;
+
+                case enMenuOption.UpdateCountry:
+                    UpdateCountry();
+                    ShowReturnMessage();
+                    break;
+
+                case enMenuOption.GetAllCountries:
+                    GetAllCountries();
+                    ShowReturnMessage();
+                    break;
+
+                case enMenuOption.DeleteCountry:
+                    DeleteCountry();
+                    ShowReturnMessage();
+                    break; 
             }
         }
 
-
-        private static bool CheckOption(int option)
-        {
-            return (option >= 1 && option <= 3);
-        }
 
         public static void ShowMainScreen()
         {
@@ -76,7 +138,7 @@ namespace Contacts_App___Console_App_Ver
                 try { Option = Convert.ToInt32(Console.ReadLine()); }
                 catch { Option = -2; }
 
-                if (Option == 3)
+                if (Option == 9)
                 {
                     break;
                 }
@@ -84,7 +146,7 @@ namespace Contacts_App___Console_App_Ver
                 ImplementOption((enMenuOption)Option);  // user choosed right option 
 
                 // the menu will be shown again if the option isn't valid num of out of range 
-            } while (!CheckOption(Option) || Option != 3);
+            } while ( Option!=9 );
 
 
 
