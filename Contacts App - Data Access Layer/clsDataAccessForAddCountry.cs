@@ -17,38 +17,7 @@ namespace Contacts_App___Data_Access_Layer
 
         private static bool IsCountryAlreadyExist(string CountryName)
         {
-            bool Exisit = false;
-            string query =  @"Select R='T'
-              from Countries
-             where Lower(CountryName) = lower(@CountryName)";
-
-            try
-            {
-                clsDbSettings.DbConnection.Open();
-                SqlCommand cmd = new SqlCommand(query, clsDbSettings.DbConnection);
-                cmd.Parameters.AddWithValue("@CountryName", CountryName);
-
-                object R = cmd.ExecuteScalar();
-                if (R != null && R.ToString() == "T")
-                {
-                    Exisit = true; // as the country already exists so we don't need to insert it again 
-                }
-                else
-                {
-                    Exisit = false; // as this country isn't exisit 
-                }
-
-            }
-            catch (Exception ex) // as this country isn't exisit 
-            {
-                Exisit = false ;
-            }
-            finally
-            {
-                clsDbSettings.DbConnection.Close();
-            }
-            return Exisit;
-
+            return clsDataAccessForCheckCountryByName.CheckCountryByName(CountryName) ;
         }
 
         public static int AddNewCountryToDb(string CountryName)

@@ -10,7 +10,7 @@ namespace Contacts_App___Data_Access_Layer
         private static string Query()
         {
             return @"Insert Into Contacts(FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryID, ImagePath)
-           values( @FirstName , @LastName ,  @Email , @Phone , @Address ,  @DateOfBirth  , @CountryID  ,   @ImagePath  );
+           values( Lower(@FirstName) , Lower(@LastName) ,  @Email , @Phone , @Address ,  @DateOfBirth  , @CountryID  ,   @ImagePath  );
             Select SCOPE_IDENTITY();";
         }
 
