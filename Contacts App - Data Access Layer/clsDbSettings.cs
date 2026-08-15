@@ -101,11 +101,6 @@ DateTime DateOfBirth, int CountryID, string ImagePath)
                 cmd.Parameters.AddWithValue("@ContactID", DBNull.Value); // pass the contact id as null in db if there isn't value
 
 
-            if (ImagePath != null || ImagePath != string.Empty)
-                cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
-            else
-                cmd.Parameters.AddWithValue("@ImagePath", DBNull.Value); // pass the image path as null in db if there isn't value 
-
             return cmd;
         }
 
