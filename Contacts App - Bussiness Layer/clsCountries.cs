@@ -90,7 +90,7 @@ namespace Contacts_App___Bussiness_Layer
 
         private bool UpdateCountry()
         {
-            return clsDataAccessForUpdateCountry.UpdateCountryOnDb(this.CountryName ,this.CountryID); 
+            return clsDataAccessForUpdateCountry.UpdateCountryOnDb(this.CountryName ,this.CountryID,this.PhoneCode , this.Code ); 
         }
 
         public bool Save()

@@ -14,6 +14,7 @@ namespace Contacts_App___Console_App_Ver
             Console.Write("\nEnter Country Name: ");
             string? name = Console.ReadLine();
 
+
             clsCountries ? country = clsCountries.FindCountryByName(name);
 
             if (country != null)
@@ -23,6 +24,12 @@ namespace Contacts_App___Console_App_Ver
 
                 Console.Write("\nEnter New Country Name: ");
                 country.CountryName = Console.ReadLine();
+
+                Console.Write("\nEnter Phone Code: ");
+                country.PhoneCode = Console.ReadLine();
+
+                Console.Write("\nEnter Code : ");
+                country.Code = Console.ReadLine();
 
                 country.Save(); // save the new update 
 
