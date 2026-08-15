@@ -38,7 +38,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void ShowUpdateContactScreen()//3 
         {
-            clsUpdateScreen.ShowUpdateScreen();
+            clsUpdateContactScreen.ShowUpdateScreen();
         }
 
         private static void ShowDeleteContactScreen()//4 

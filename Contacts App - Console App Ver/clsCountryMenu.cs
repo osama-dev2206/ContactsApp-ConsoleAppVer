@@ -55,7 +55,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void UpdateCountry()
         {
-
+            clsUpdateCountryScreen.ShowUpdateCountry();
         }
 
         private static void GetAllCountries()

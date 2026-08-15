@@ -8,7 +8,7 @@ namespace Contacts_App___Bussiness_Layer
     public class clsCountries
     {
         public int  CountryID {  get; private set; }
-        public string  CountryName { get; private set; }
+        public string  CountryName { get;  set; }
         enum enMode { update = 1, add = 2 };
 
         enMode _mode = enMode.update;
@@ -81,7 +81,7 @@ namespace Contacts_App___Bussiness_Layer
 
         private bool UpdateCountry()
         {
-            return false; 
+            return clsDataAccessForUpdateCountry.UpdateCountryOnDb(this.CountryName ,this.CountryID); 
         }
 
         public bool Save()

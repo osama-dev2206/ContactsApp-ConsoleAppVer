@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Contacts_App___Console_App_Ver
 {
-    internal static class clsUpdateScreen
+    internal static class clsUpdateContactScreen
     {
 
         private static void FillToUpdateContactInfo(ref clsContact contact)
