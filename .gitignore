@@ -5,4 +5,4 @@ bin/
 obj/
 *.user
 *.suo
-*.sh
+*.shpush.sh
