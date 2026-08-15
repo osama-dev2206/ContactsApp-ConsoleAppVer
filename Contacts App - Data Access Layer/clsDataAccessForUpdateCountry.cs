@@ -23,10 +23,24 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand( Query() , clsDbSettings.DbConnection);
+
+                if(CountryName != "")
                 cmd.Parameters.AddWithValue("@CountryName",CountryName);
-                cmd.Parameters.AddWithValue("@CountryID", CountryID);
-                cmd.Parameters.AddWithValue("@PhoneCode", PhoneCode);
+                else 
+                 cmd.Parameters.AddWithValue("@CountryName", DBNull.Value);
+
+                if(Code != "")
                 cmd.Parameters.AddWithValue("@Code", Code);
+                else
+                 cmd.Parameters.AddWithValue("@Code", DBNull.Value);
+
+                if(PhoneCode != "")
+                cmd.Parameters.AddWithValue("@PhoneCode", PhoneCode); 
+                else
+                 cmd.Parameters.AddWithValue("@PhoneCode", DBNull.Value);
+
+                 cmd.Parameters.AddWithValue("@CountryID", CountryID);
+
 
                 int  NumOfAffectedRows = cmd.ExecuteNonQuery();
                 if (clsDbSettings.CheckNumOfAffectedRows(NumOfAffectedRows ) )

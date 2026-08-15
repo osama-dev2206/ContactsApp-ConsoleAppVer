@@ -30,9 +30,22 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
+                
+                if(CountryName != "")
                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                else 
+                 cmd.Parameters.AddWithValue("@CountryName", DBNull.Value);
+
+                if(Code != "")
                 cmd.Parameters.AddWithValue("@Code", Code);
+                else
+                 cmd.Parameters.AddWithValue("@Code", DBNull.Value);
+
+                if(PhoneCode != "")
                 cmd.Parameters.AddWithValue("@PhoneCode", PhoneCode); 
+                else
+                 cmd.Parameters.AddWithValue("@PhoneCode", DBNull.Value);
+
 
                 var R = cmd.ExecuteScalar(); // execute the query and get the last identity from db
 

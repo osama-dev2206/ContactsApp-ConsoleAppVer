@@ -111,3 +111,9 @@ UPDATE Countries SET Code = 'AE', PhoneCode = '+971' WHERE CountryID = 6;
 
 delete  Countries
 where Countries.CountryID = 6;
+
+
+Update Countries
+Set CountryName = '' ,  
+Code = 'US', PhoneCode = '+1'  
+WHERE CountryID = 1
