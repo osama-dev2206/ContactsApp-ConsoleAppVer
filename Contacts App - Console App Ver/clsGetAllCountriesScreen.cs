@@ -12,9 +12,8 @@ namespace Contacts_App___Console_App_Ver
         {
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("\t\t\t\t\t\t{0,-12}{1,-15}", "CountryID", "CountryName");
+            Console.WriteLine("\t\t\t\t\t\t{0,-12}{1,-15}{2,-12}{3,-10}", "CountryID", "CountryName", "PhoneCode", "Code");
         }
-
         static public void  ShowAllCountries()
         {
             clsScreenUtils.PrintMenuOption("              Get All Countries ");
@@ -27,7 +26,7 @@ namespace Contacts_App___Console_App_Ver
             {
                 foreach (DataRow Row in dt.Rows )
                 {
-                    Console.WriteLine("\t\t\t\t\t\t{0,-12}{1,-15}", Row["CountryID"], Row["CountryName"]);
+                    Console.WriteLine("\t\t\t\t\t\t{0,-12}{1,-15}{2,-12}{3,-10}", Row["CountryID"], Row["CountryName"], Row["PhoneCode"], Row["Code"]);
                 }
             }
             else
