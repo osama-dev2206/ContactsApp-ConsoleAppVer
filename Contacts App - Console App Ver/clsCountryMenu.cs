@@ -65,7 +65,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void DeleteCountry()
         {
-
+            clsDeleteCountryScreen.DeleteCountry();
         }
 
         private static void ShowReturnMessage()

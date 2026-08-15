@@ -1,6 +1,7 @@
 ﻿using Contacts_App___Data_Access_Layer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Contacts_App___Bussiness_Layer
@@ -107,6 +108,17 @@ namespace Contacts_App___Bussiness_Layer
             return false;
         }
 
+
+        public  static bool DeleteCountry(int CountryID)
+        {
+            if (!int.TryParse(CountryID.ToString(), out _)) return false;
+           else  return clsDataAccessForDeleteCountry.DeleteCountryFromDb(CountryID);
+        }
+
+        public static DataTable GetAllCountries()
+        {
+            return clsDataAccessForGetAllCountries.GetAllCountries(); 
+        }
 
     }
 }

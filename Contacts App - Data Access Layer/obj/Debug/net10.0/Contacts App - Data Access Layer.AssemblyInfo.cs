@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Contacts App - Data Access Layer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2862d67a90556b27d8696a414b57fd5e7385e025")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d29a5532cb115e7792e0fda4a0df123bcca0323")]
 [assembly: System.Reflection.AssemblyProductAttribute("Contacts App - Data Access Layer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Contacts App - Data Access Layer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
