@@ -10,7 +10,8 @@ namespace Contacts_App___Data_Access_Layer
     {
         private static string Query()
         {
-            return @"Select * From Countries ; "; 
+            return @"Select * From Countries
+              order by CountryID ASC; "; 
         }
 
         public static DataTable GetAllCountries()

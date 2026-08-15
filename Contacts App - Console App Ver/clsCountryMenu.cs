@@ -60,7 +60,7 @@ namespace Contacts_App___Console_App_Ver
 
         private static void GetAllCountries()
         {
-
+            clsGetAllCountriesScreen.ShowAllCountries();
         }
 
         private static void DeleteCountry()
