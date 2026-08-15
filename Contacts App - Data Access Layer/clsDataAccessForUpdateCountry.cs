@@ -39,7 +39,10 @@ namespace Contacts_App___Data_Access_Layer
                 else
                  cmd.Parameters.AddWithValue("@PhoneCode", DBNull.Value);
 
+                if( int.TryParse(CountryID.ToString() , out _  ) )
                  cmd.Parameters.AddWithValue("@CountryID", CountryID);
+                else
+                    cmd.Parameters.AddWithValue("@CountryID", DBNull.Value);
 
 
                 int  NumOfAffectedRows = cmd.ExecuteNonQuery();

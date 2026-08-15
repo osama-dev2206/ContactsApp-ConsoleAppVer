@@ -21,7 +21,11 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
-                cmd.Parameters.AddWithValue("@CountryName", CountryName);
+
+                if( CountryName != ""  && CountryName != null )
+                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                else
+                    cmd.Parameters.AddWithValue("@CountryName", DBNull.Value);
 
                 object res = cmd.ExecuteScalar(); // (query) will return one column only which indicates that the record is exist or null 
                 if (res != null && res.ToString() == "T")

@@ -22,12 +22,25 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
-                cmd.Parameters.AddWithValue("@CountryName", CountryName);
+
+                if(CountryName != null && CountryName != "") 
+                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                else
+                    cmd.Parameters.AddWithValue("@CountryName", DBNull.Value);
 
                 SqlDataReader Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    CountryID = (int)Reader["CountryID"];
+
+                    if (Reader["CountryID"] != DBNull.Value)
+                    {
+                        CountryID = (int)Reader["CountryID"];
+                    }
+                    else
+                    {
+                        CountryID = 0;
+                    }
+
                     if (Reader["Code"] != DBNull.Value)
                     {
                         Code = (string)Reader["Code"];
@@ -47,9 +60,10 @@ namespace Contacts_App___Data_Access_Layer
                     }
 
                     res = true;
+                  
                 }
 
-
+                Reader.Close();
 
 
             }

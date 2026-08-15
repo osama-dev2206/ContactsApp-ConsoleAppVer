@@ -3,15 +3,46 @@
   "WorkspaceRootPath": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\dataaccessforsearchcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\dataaccessforaddnewcontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessupdatecontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforupdatecountry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clsupdatecountryscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clsupdatecountryscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforlistcontacts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clscountrymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clscountrymenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessdeletecontact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforcheckcountrybyname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessfordeletecountry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforfindcountrybyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforfindcountrybyname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforgetallcountries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforiscontactexist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdataaccessforiscountryexisitbyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B5180971-6937-1659-F759-0B85E52AFAAF}|..\\Contacts App - Bussiness Layer\\Contacts App - Bussiness Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - bussiness layer\\clscountries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -24,56 +55,199 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "clsUpdateCountryScreen.cs",
-              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsUpdateCountryScreen.cs",
-              "RelativeDocumentMoniker": "clsUpdateCountryScreen.cs",
-              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsUpdateCountryScreen.cs",
-              "RelativeToolTip": "clsUpdateCountryScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "DataAccessForSearchContact.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\DataAccessForSearchContact.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\DataAccessForSearchContact.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\DataAccessForSearchContact.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\DataAccessForSearchContact.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-15T15:01:27.063Z",
+              "WhenOpened": "2026-08-15T15:59:10.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "DataAccessForAddNewContact.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\DataAccessForAddNewContact.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\DataAccessForAddNewContact.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\DataAccessForAddNewContact.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\DataAccessForAddNewContact.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowAcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:59:00.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clsDbSettings.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDbSettings.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDbSettings.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDbSettings.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDbSettings.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAwwGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:54:08.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsDataAccessUpdateContact.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:53:34.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "clsDataAccessForListContacts.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForListContacts.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForListContacts.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForListContacts.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForListContacts.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAuwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:50:42.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "clsDataAccessForIsCountryExisitById.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForIsCountryExisitById.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForIsCountryExisitById.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForIsCountryExisitById.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForIsCountryExisitById.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAiwBAAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:49:37.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "clsDataAccessForIsContactExist.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForIsContactExist.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForIsContactExist.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForIsContactExist.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForIsContactExist.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:49:22.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "clsDataAccessForGetAllCountries.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForGetAllCountries.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForGetAllCountries.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForGetAllCountries.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForGetAllCountries.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA7wAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:49:09.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "clsDataAccessForFindCountryByName.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByName.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAzwBEAAAB9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:47:26.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "clsDataAccessForFindCountryByID.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByID.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByID.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByID.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForFindCountryByID.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAzwBAAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:44:23.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "clsDataAccessForDeleteCountry.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForDeleteCountry.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForDeleteCountry.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForDeleteCountry.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForDeleteCountry.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAywA8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:43:23.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "clsDataAccessForCheckCountryByName.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForCheckCountryByName.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForCheckCountryByName.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForCheckCountryByName.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForCheckCountryByName.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowBAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:41:52.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "clsDataAccessDeleteContact.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessDeleteContact.cs",
+              "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessDeleteContact.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessDeleteContact.cs",
+              "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessDeleteContact.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T15:40:03.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "clsDataAccessForUpdateCountry.cs",
               "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForUpdateCountry.cs",
               "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessForUpdateCountry.cs",
               "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessForUpdateCountry.cs",
               "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDataAccessForUpdateCountry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAABzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-15T14:57:02.166Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "clsCountryMenu.cs",
-              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryMenu.cs",
-              "RelativeDocumentMoniker": "clsCountryMenu.cs",
-              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsCountryMenu.cs",
-              "RelativeToolTip": "clsCountryMenu.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAIAwwDkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-15T13:00:23.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "clsCountries.cs",
               "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsCountries.cs",
               "RelativeDocumentMoniker": "..\\Contacts App - Bussiness Layer\\clsCountries.cs",
               "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Bussiness Layer\\clsCountries.cs",
               "RelativeToolTip": "..\\Contacts App - Bussiness Layer\\clsCountries.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAA8wF4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-15T12:42:29.826Z",
               "EditorCaption": ""

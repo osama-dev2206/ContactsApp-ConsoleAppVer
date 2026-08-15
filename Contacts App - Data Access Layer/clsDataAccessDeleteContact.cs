@@ -16,7 +16,12 @@ namespace Contacts_App___Data_Access_Layer
         private static  SqlCommand cmd (int ContactID)
         {
             SqlCommand cmd = new SqlCommand (Query() , clsDbSettings.DbConnection);
-            cmd.Parameters.AddWithValue("@ContactID", ContactID);
+
+            if( int.TryParse(ContactID.ToString() , out _ ) )
+              cmd.Parameters.AddWithValue("@ContactID", ContactID);
+            else
+                cmd.Parameters.AddWithValue("@ContactID", DBNull.Value);
+
             return cmd; 
         }
 

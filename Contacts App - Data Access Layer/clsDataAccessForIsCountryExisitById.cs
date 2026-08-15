@@ -22,7 +22,11 @@ namespace Contacts_App___Data_Access_Layer
             {
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
-                cmd.Parameters.AddWithValue("@CountryID", CountryID);
+
+                if(int.TryParse(CountryID.ToString(), out _ ))
+                 cmd.Parameters.AddWithValue("@CountryID", CountryID);
+                else
+                  cmd.Parameters.AddWithValue("@CountryID", DBNull.Value);
 
                 object R = cmd.ExecuteScalar();
                 if (R != null && R.ToString() == "T")

@@ -28,12 +28,14 @@ namespace Contacts_App___Data_Access_Layer
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if(reader.HasRows) // returns T if the result set  has one or more row 
+                if( reader!=null &&reader.HasRows) // returns T if the result set  has one or more row 
                 {
                     dt.Load(reader);  // load the result set to data table 
                 }
 
-                reader.Close();
+                if(reader != null)  
+                    reader.Close();
+
             }
             catch (Exception ex) 
             { 
