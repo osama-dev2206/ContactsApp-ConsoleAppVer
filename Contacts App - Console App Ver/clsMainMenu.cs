@@ -109,11 +109,7 @@ namespace Contacts_App___Console_App_Ver
             }
         }
 
-        private static bool CheckOption(int option)
-        {
-            return (option >= 1 && option <=8);
-        }
-        
+
         public static void ShowMainScreen()
         {
             int Option = 0;
@@ -138,7 +134,7 @@ namespace Contacts_App___Console_App_Ver
                 ShowScreenAccordingToOption((enMenuOption)Option);  // user choosed right option 
 
                 // the menu will be shown again if the option isn't valid num of out of range 
-            } while(!CheckOption(Option) || Option != 8);
+            } while( Option != 8);
 
            
             

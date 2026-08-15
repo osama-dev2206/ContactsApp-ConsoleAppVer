@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - console app ver\\clsmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB2E58DD-1EEF-CD3B-3854-D0215DE680DE}|Contacts App - Presentation Layer.csproj|solutionrelative:clsmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0A76880-F84F-6C9A-C968-C1E4FF195385}|..\\Contacts App - Data Access Layer\\Contacts App - Data Access Layer.csproj|d:\\self-study\\c#\\ado.net\\contacts app - data access layer\\clsdbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -21,19 +25,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "clsMainMenu.cs",
+              "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsMainMenu.cs",
+              "RelativeDocumentMoniker": "clsMainMenu.cs",
+              "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Console App Ver\\clsMainMenu.cs",
+              "RelativeToolTip": "clsMainMenu.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAiwG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-15T16:51:38.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "clsDbSettings.cs",
               "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDbSettings.cs",
               "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDbSettings.cs",
               "ToolTip": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDbSettings.cs",
               "RelativeToolTip": "..\\Contacts App - Data Access Layer\\clsDbSettings.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAIA0wGUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAtwFsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-15T16:48:50.953Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "clsDataAccessUpdateContact.cs",
               "DocumentMoniker": "D:\\Self-Study\\C#\\Ado.Net\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
               "RelativeDocumentMoniker": "..\\Contacts App - Data Access Layer\\clsDataAccessUpdateContact.cs",
