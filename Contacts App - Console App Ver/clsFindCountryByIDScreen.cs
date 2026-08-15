@@ -1,6 +1,7 @@
 ﻿using Contacts_App___Bussiness_Layer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Text;
 
 namespace Contacts_App___Console_App_Ver
@@ -19,6 +20,8 @@ namespace Contacts_App___Console_App_Ver
             {
                 Console.WriteLine($"\n\t\t\t\t\tthe Country Id Is {c.CountryID} ");
                 Console.WriteLine($"\t\t\t\t\tThe Country Name Is: {c.CountryName}");
+                Console.WriteLine($"\t\t\t\t\tThe Country Code Is : {c.Code}");
+                Console.WriteLine($"\t\t\t\t\tThe Country Phone Code Is : {c.PhoneCode}");
             }
             else
             {

@@ -9,7 +9,7 @@ namespace Contacts_App___Data_Access_Layer
     {
         private static string Query()
         {
-            return @"Select Countries.CountryName 
+            return @"Select *
                   from Countries
              where Countries.CountryID= @CountryID ; ";
         }
@@ -44,6 +44,15 @@ namespace Contacts_App___Data_Access_Layer
                     else
                     {
                         PhoneCode = "";
+                    }
+
+                    if (Reader["CountryName"] != DBNull.Value)
+                    {
+                        CountryName = (string)Reader["CountryName"];
+                    }
+                    else
+                    {
+                        CountryName = "";
                     }
 
                     res = true;

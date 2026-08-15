@@ -27,10 +27,12 @@ namespace Contacts_App___Bussiness_Layer
             _mode = enMode.update;
         }
 
-
-        public  clsCountries( string name)
+        // for adding new country
+        public clsCountries( string name , string Code , string PhoneCode)
         {
             this.CountryName = name;
+            this.Code = Code;
+            this.PhoneCode = PhoneCode;
 
             _mode = enMode.add;
         }
@@ -65,7 +67,7 @@ namespace Contacts_App___Bussiness_Layer
             if (!int.TryParse(CountryID.ToString(), out _ )) return null;
 
             string ? Name = "";    string Code = "";  string PhoneCode = "";
-            bool res = clsDataAccessForFindCountryByID.FindCountryByID(CountryID, ref Name, Code: ref Code , PhoneCode: ref PhoneCode );
+            bool res = clsDataAccessForFindCountryByID.FindCountryByID(CountryID: CountryID, CountryName: ref Name, Code: ref Code , PhoneCode: ref PhoneCode );
 
             if (res) 
                 return new clsCountries(CountryID, Name,Code , PhoneCode);
@@ -82,7 +84,7 @@ namespace Contacts_App___Bussiness_Layer
 
         private bool AddNewCountry()
         {
-            int id = clsDataAccessForAddCountry.AddNewCountryToDb(this.CountryName);
+            int id = clsDataAccessForAddCountry.AddNewCountryToDb(this.CountryName,this.Code , this.PhoneCode);
             return (id != -1); // if the id !=-1 then the record has inserted successfully 
         }
 

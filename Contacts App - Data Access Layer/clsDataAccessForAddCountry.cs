@@ -9,10 +9,9 @@ namespace Contacts_App___Data_Access_Layer
     {
         private static string Query()
         {
-            return @"
-             Insert Into Countries (CountryName)
-             values (@CountryName);
-              Select SCOPE_IDENTITY()";
+            return @"Insert Into Countries (CountryName,Code,PhoneCode)
+            values ( @CountryName , UPPER(@Code)   , @PhoneCode   )
+              Select SCOPE_IDENTITY();";
         }
 
         private static bool IsCountryAlreadyExist(string CountryName)
@@ -20,7 +19,7 @@ namespace Contacts_App___Data_Access_Layer
             return clsDataAccessForCheckCountryByName.IsCountryExisitByName(CountryName) ; // check if the country already in db or not :)
         }
 
-        public static int AddNewCountryToDb(string CountryName)
+        public static int AddNewCountryToDb(string CountryName , string Code , string PhoneCode)
         {
             int TheLastIdentityFromDb = -1;
 
@@ -32,8 +31,10 @@ namespace Contacts_App___Data_Access_Layer
                 clsDbSettings.DbConnection.Open();
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                cmd.Parameters.AddWithValue("@Code", Code);
+                cmd.Parameters.AddWithValue("@PhoneCode", PhoneCode); 
 
-                var R = cmd.ExecuteScalar();
+                var R = cmd.ExecuteScalar(); // execute the query and get the last identity from db
 
                 if (R != null && int.TryParse(R.ToString(), out int Id))
                 {

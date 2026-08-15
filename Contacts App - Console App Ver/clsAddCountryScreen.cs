@@ -14,7 +14,15 @@ namespace Contacts_App___Console_App_Ver
             Console.Write("\nEnter Country Name: ");
             string? Name = Console.ReadLine();
 
-            clsCountries country = new clsCountries(Name);
+            Console.Write("\nEnter Country Code: ");
+            string? Code = Console.ReadLine();
+
+
+            Console.Write("\nEnter Country Phone Code: ");
+            string?PhoneCode = Console.ReadLine();
+
+
+            clsCountries country = new clsCountries(Name,Code , PhoneCode);
 
             if (country.Save())
             {
@@ -24,6 +32,10 @@ namespace Contacts_App___Console_App_Ver
             {
                 Console.WriteLine("\a\n\t\t\t\tFailed To Insert  !");
             }
+
         }
+
+
+
     }
 }
