@@ -9,13 +9,13 @@ namespace Contacts_App___Data_Access_Layer
     {
         static private string Query() 
         {
-            return @"Select Countries.CountryID 
+            return @"Select *
               From Countries
                 Where Lower(Countries.CountryName) = Lower(@CountryName ) ;";
         }
 
 
-        public static bool  FindCountryByName(string CountryName , ref int CountryID )
+        public static bool  FindCountryByName(string CountryName , ref int CountryID , ref string Code, ref string PhoneCode)
         {
             bool res = false;
             try
@@ -24,13 +24,34 @@ namespace Contacts_App___Data_Access_Layer
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
 
-                object reader = cmd.ExecuteScalar();
-
-                if (reader != null && int.TryParse(reader.ToString(), out int Country_ID) )
+                SqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
                 {
-                    CountryID = Country_ID;
-                    res=true;
+                    CountryID = (int)Reader["CountryID"];
+                    if (Reader["Code"] != DBNull.Value)
+                    {
+                        Code = (string)Reader["Code"];
+                    }
+                    else
+                    {
+                        Code = "";
+                    }
+
+                    if (Reader["PhoneCode"] != DBNull.Value)
+                    {
+                        PhoneCode = (string)Reader["PhoneCode"];
+                    }
+                    else
+                    {
+                        PhoneCode = "";
+                    }
+
+                    res = true;
                 }
+
+
+
+
             }
             catch (Exception ex)
             {

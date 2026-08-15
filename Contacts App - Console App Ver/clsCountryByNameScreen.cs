@@ -21,6 +21,8 @@ namespace Contacts_App___Console_App_Ver
             {
                 Console.WriteLine($"\n\t\t\t\t\tThe Country Name Is : {Country.CountryName}");
                 Console.WriteLine($"\t\t\t\t\tThe Country Id Is : {Country.CountryID}");
+                Console.WriteLine($"\t\t\t\t\tThe Country Code Is : {Country.Code}");
+                Console.WriteLine($"\t\t\t\t\tThe Country Phone Code Is : {Country.PhoneCode}");
             }
             else
             {

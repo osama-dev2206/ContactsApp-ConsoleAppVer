@@ -14,7 +14,7 @@ namespace Contacts_App___Data_Access_Layer
             where LOWER(Countries.CountryName)= Lower(@CountryName); ";
         }
 
-        public static bool CheckCountryByName(string ?CountryName)
+        public static bool IsCountryExisitByName(string ?CountryName)
         {
             bool result = false;
             try
@@ -23,11 +23,12 @@ namespace Contacts_App___Data_Access_Layer
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
                 cmd.Parameters.AddWithValue("@CountryName", CountryName);
 
-                object res = cmd.ExecuteScalar(); // will return one column only which indicates that the record is exist or null 
+                object res = cmd.ExecuteScalar(); // (query) will return one column only which indicates that the record is exist or null 
                 if (res != null && res.ToString() == "T")
                 {
                     result = true;
                 }
+
             }
             catch (Exception ex)
             {
@@ -40,6 +41,7 @@ namespace Contacts_App___Data_Access_Layer
             return result;
             
         }
+
 
     }
 }

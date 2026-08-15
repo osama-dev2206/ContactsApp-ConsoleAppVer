@@ -17,7 +17,7 @@ namespace Contacts_App___Data_Access_Layer
 
         private static bool IsCountryAlreadyExist(string CountryName)
         {
-            return clsDataAccessForCheckCountryByName.CheckCountryByName(CountryName) ; // check if the country already in db or not :)
+            return clsDataAccessForCheckCountryByName.IsCountryExisitByName(CountryName) ; // check if the country already in db or not :)
         }
 
         public static int AddNewCountryToDb(string CountryName)

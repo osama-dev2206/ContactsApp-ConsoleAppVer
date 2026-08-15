@@ -14,7 +14,7 @@ namespace Contacts_App___Data_Access_Layer
              where Countries.CountryID= @CountryID ; ";
         }
 
-        public static bool FindCountryByID(int CountryID , ref string ? CountryName)
+        public static bool FindCountryByID(int CountryID , ref string CountryName, ref string Code, ref string PhoneCode)
         {
             bool res = false;
             try
@@ -23,12 +23,32 @@ namespace Contacts_App___Data_Access_Layer
                 SqlCommand cmd = new SqlCommand(Query(), clsDbSettings.DbConnection);
                 cmd.Parameters.AddWithValue("@CountryID", CountryID);
 
-                object r = cmd.ExecuteScalar();
-                if (r != null)
+
+                SqlDataReader Reader = cmd.ExecuteReader();
+                while (Reader.Read())
                 {
-                    CountryName = r.ToString();
+                    CountryID = (int)Reader["CountryID"];
+                    if (Reader["Code"] != DBNull.Value)
+                    {
+                        Code = (string)Reader["Code"];
+                    }
+                    else
+                    {
+                        Code = "";
+                    }
+
+                    if (Reader["PhoneCode"] != DBNull.Value)
+                    {
+                        PhoneCode = (string)Reader["PhoneCode"];
+                    }
+                    else
+                    {
+                        PhoneCode = "";
+                    }
+
                     res = true;
                 }
+
 
             }
             catch (Exception ex)
