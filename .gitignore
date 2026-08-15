@@ -5,4 +5,5 @@ bin/
 obj/
 *.user
 *.suo
-*.sh
+*.shpush.sh
+push.sh
