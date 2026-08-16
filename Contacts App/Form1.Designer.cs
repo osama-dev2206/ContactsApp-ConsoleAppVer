@@ -36,16 +36,16 @@
             pictureBox1 = new PictureBox();
             tbSearch = new TextBox();
             label1 = new Label();
-            DGV = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
             tsEdit = new ToolStripMenuItem();
             tsDelete = new ToolStripMenuItem();
             errorProvider1 = new ErrorProvider(components);
+            DGV = new DataGridView();
             grbMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DGV).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGV).BeginInit();
             SuspendLayout();
             // 
             // grbMain
@@ -100,39 +100,6 @@
             label1.TabIndex = 1;
             label1.Text = "Search";
             // 
-            // DGV
-            // 
-            DGV.AllowUserToAddRows = false;
-            DGV.AllowUserToDeleteRows = false;
-            DGV.BackgroundColor = Color.Gray;
-            DGV.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            DGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV.Dock = DockStyle.Fill;
-            DGV.GridColor = SystemColors.Control;
-            DGV.Location = new Point(0, 139);
-            DGV.Name = "DGV";
-            DGV.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            DGV.RowHeadersWidth = 51;
-            DGV.Size = new Size(1208, 340);
-            DGV.TabIndex = 1;
-            DGV.SelectionChanged += DGV_SelectionChanged;
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -160,6 +127,36 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // DGV
+            // 
+            DGV.AllowUserToAddRows = false;
+            DGV.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DGV.DefaultCellStyle = dataGridViewCellStyle2;
+            DGV.Dock = DockStyle.Fill;
+            DGV.Location = new Point(0, 139);
+            DGV.Name = "DGV";
+            DGV.ReadOnly = true;
+            DGV.RowHeadersWidth = 51;
+            DGV.Size = new Size(1208, 340);
+            DGV.TabIndex = 1;
+            DGV.SelectionChanged += DGV_SelectionChanged;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -177,9 +174,9 @@
             grbMain.ResumeLayout(false);
             grbMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DGV).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGV).EndInit();
             ResumeLayout(false);
 
         }
@@ -188,13 +185,13 @@
 
         private System.Windows.Forms.GroupBox grbMain;
         private System.Windows.Forms.Label label1;
-        private DataGridView DGV;
         private TextBox tbSearch;
         private PictureBox pictureBox1;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem tsEdit;
         private ToolStripMenuItem tsDelete;
         private ErrorProvider errorProvider1;
+        private DataGridView DGV;
     }
 }
 

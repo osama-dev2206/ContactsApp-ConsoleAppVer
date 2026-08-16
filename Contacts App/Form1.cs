@@ -20,6 +20,7 @@ namespace Contacts_App
             InitializeComponent();
             this.ContextMenuStrip = this.contextMenuStrip1; // Assign the context menu to the form
 
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -109,7 +110,7 @@ namespace Contacts_App
                             selectedContactID = -1; // rest selected contact ID after deletion
 
                             MessageBox.Show("Contact deleted successfully.", "Delete Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadAllContacts(); // Refresh the DataGridView after editing a contact
+                            LoadAllContacts(); // Refresh the DataGridView after deleting a contact
                         }
 
                     }

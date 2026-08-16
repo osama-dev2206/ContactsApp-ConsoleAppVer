@@ -25,7 +25,7 @@ namespace Contacts_App___Data_Access_Layer
        INNER JOIN
        Countries
        ON Countries.CountryID = Contacts.CountryID;
-         Order By Contacts.ContactID";
+        ";
 
         }
 

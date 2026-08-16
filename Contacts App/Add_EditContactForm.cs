@@ -20,6 +20,7 @@ namespace Contacts_App
         public Add_EditContactForm(int ContactID)
         {
             InitializeComponent();
+   
             this.contactId = ContactID;
 
             if (ContactID == -1)
@@ -27,11 +28,13 @@ namespace Contacts_App
                 _Mode = enFormMode.Add; // contact isn't on db 
                 this.labNewFormState.Text = "Add New Contact";
                 this.linkLabelChangePhoto.Visible = true;
+                FillCountriesInDropDownList();
             }
             else
             {
                 _Mode = enFormMode.Edit; // contact is on db and we want to edit it
                 this.labNewFormState.Text = "Edit Contact";
+                FillCountriesInDropDownList();
                 LoadContactData();
                 LoadPicture();
 
@@ -39,9 +42,10 @@ namespace Contacts_App
 
         }
 
+        // Load Form 
         private void Add_EditContactForm_Load(object sender, EventArgs e)
         {
-            FillCountriesInDropDownList();
+            
             this.dtDateOfBirth.Value = DateTime.Now; //set default value 
         }
 
@@ -69,13 +73,15 @@ namespace Contacts_App
             }
         }
 
+
+
         // Edit Contact ///
         private void LoadContactData()
         {
             if (_Mode == enFormMode.Edit)
             {
 
-                if (clsContact.GetContactById(this.contactId) != null)
+                if (clsContact.GetContactById(this.contactId) != null) // check contact existence at first 
                 {
                     contact = clsContact.GetContactById(this.contactId);
                     this.tbFirstName.Text = contact.FirstName;
@@ -84,19 +90,7 @@ namespace Contacts_App
                     this.mtbPhone.Text = contact.Phone;
                     this.tbAddress.Text = contact.Address;
                     this.dtDateOfBirth.Value = contact.DateOfBirth;
-                    this.cbCountryName.SelectedItem = clsCountries.FindCountryByID(contact.CountryID);
-
-                    //if (!String.IsNullOrEmpty(contact.ImagePath)) // there is image to display
-                    //{
-                    //    this.LinkLabelDeletePhoto.Visible = true;
-                    //    this.linkLabelChangePhoto.Visible = true;
-                    //}
-                    //else // no image  
-                    //{
-                    //    this.linkLabelChangePhoto.Visible = true;
-                    //    this.LinkLabelDeletePhoto.Visible = false;
-                    //}
-
+                    cbCountryName.Text = clsCountries.FindCountryByID(contact.CountryID).CountryName.Trim();
                 }
                 else
                 {
@@ -151,8 +145,12 @@ namespace Contacts_App
         {
             if (this.cbCountryName.SelectedIndex != -1 && cbCountryName != null)
             {
-                if (clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()).CountryID != null)
-                    contact.CountryID = clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()).CountryID;
+                clsCountries c =  clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()); // find the country object by name to get the country id 
+                if (c != null)
+                {
+                    this.contact.CountryID = c.CountryID;
+                }
+
             }
 
         }
