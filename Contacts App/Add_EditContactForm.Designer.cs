@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_EditContactForm));
             pictureBox1 = new PictureBox();
             labNewFormState = new Label();
@@ -50,7 +51,9 @@
             linkLabelChangePhoto = new LinkLabel();
             LinkLabelDeletePhoto = new LinkLabel();
             openFileDialog1 = new OpenFileDialog();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -116,6 +119,7 @@
             tbFirstName.Size = new Size(214, 23);
             tbFirstName.TabIndex = 4;
             tbFirstName.TextChanged += tbFirstName_TextChanged;
+            tbFirstName.Validating += TextBoxes_Validating;
             // 
             // label1
             // 
@@ -137,6 +141,7 @@
             tbLastName.Size = new Size(214, 23);
             tbLastName.TabIndex = 4;
             tbLastName.TextChanged += tbLastName_TextChanged;
+            tbLastName.Validating += TextBoxes_Validating;
             // 
             // label2
             // 
@@ -152,11 +157,12 @@
             // 
             mtbEmail.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             mtbEmail.Location = new Point(151, 168);
-            mtbEmail.Mask = "Aaaaaaaaaa@AAaaa.com";
+            mtbEmail.Mask = "AAAAAAAAAA@AAaaa.com";
             mtbEmail.Name = "mtbEmail";
             mtbEmail.Size = new Size(211, 27);
             mtbEmail.TabIndex = 8;
             mtbEmail.TextChanged += mtbEmail_TextChanged;
+            mtbEmail.Validating += mtbPhone_Validating;
             // 
             // label4
             // 
@@ -186,6 +192,7 @@
             mtbPhone.Size = new Size(211, 27);
             mtbPhone.TabIndex = 13;
             mtbPhone.TextChanged += mtbPhone_TextChanged;
+            mtbPhone.Validating += mtbPhone_Validating;
             // 
             // tbAddress
             // 
@@ -197,6 +204,7 @@
             tbAddress.Size = new Size(214, 23);
             tbAddress.TabIndex = 14;
             tbAddress.TextChanged += tbAddress_TextChanged;
+            tbAddress.Validating += TextBoxes_Validating;
             // 
             // label3
             // 
@@ -252,14 +260,15 @@
             cbCountryName.Sorted = true;
             cbCountryName.TabIndex = 19;
             cbCountryName.SelectedIndexChanged += cbCountryName_SelectedIndexChanged;
+            cbCountryName.Validating += cbCountryName_Validating;
             // 
             // linkLabelChangePhoto
             // 
             linkLabelChangePhoto.AutoSize = true;
-            linkLabelChangePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabelChangePhoto.Location = new Point(408, 217);
+            linkLabelChangePhoto.Font = new Font("SF Pro Display", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabelChangePhoto.Location = new Point(418, 217);
             linkLabelChangePhoto.Name = "linkLabelChangePhoto";
-            linkLabelChangePhoto.Size = new Size(73, 18);
+            linkLabelChangePhoto.Size = new Size(82, 20);
             linkLabelChangePhoto.TabIndex = 20;
             linkLabelChangePhoto.TabStop = true;
             linkLabelChangePhoto.Text = "set photo";
@@ -268,9 +277,11 @@
             // 
             // LinkLabelDeletePhoto
             // 
+            LinkLabelDeletePhoto.ActiveLinkColor = Color.IndianRed;
             LinkLabelDeletePhoto.AutoSize = true;
             LinkLabelDeletePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LinkLabelDeletePhoto.Location = new Point(399, 253);
+            LinkLabelDeletePhoto.LinkColor = Color.FromArgb(192, 0, 0);
+            LinkLabelDeletePhoto.Location = new Point(412, 253);
             LinkLabelDeletePhoto.Name = "LinkLabelDeletePhoto";
             LinkLabelDeletePhoto.Size = new Size(94, 18);
             LinkLabelDeletePhoto.TabIndex = 21;
@@ -282,6 +293,10 @@
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // Add_EditContactForm
             // 
@@ -315,7 +330,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New Contact";
             Load += Add_EditContactForm_Load;
+            Validating += cbCountryName_Validating;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -343,5 +360,6 @@
         private LinkLabel linkLabelChangePhoto;
         private LinkLabel LinkLabelDeletePhoto;
         private OpenFileDialog openFileDialog1;
+        private ErrorProvider errorProvider1;
     }
 }

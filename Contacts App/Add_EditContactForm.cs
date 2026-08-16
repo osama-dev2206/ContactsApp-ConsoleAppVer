@@ -26,7 +26,7 @@ namespace Contacts_App
             {
                 _Mode = enFormMode.Add; // contact isn't on db 
                 this.labNewFormState.Text = "Add New Contact";
-                this.linkLabelChangePhoto.Visible = true; 
+                this.linkLabelChangePhoto.Visible = true;
             }
             else
             {
@@ -34,7 +34,7 @@ namespace Contacts_App
                 this.labNewFormState.Text = "Edit Contact";
                 LoadContactData();
                 LoadPicture();
-         
+
             }
 
         }
@@ -56,7 +56,7 @@ namespace Contacts_App
 
         void LoadPicture()
         {
-            if(!String.IsNullOrEmpty(this.contact.ImagePath) && Path.Exists(this.contact.ImagePath) ) // there is image 
+            if (!String.IsNullOrEmpty(this.contact.ImagePath) && Path.Exists(this.contact.ImagePath)) // there is image 
             {
                 this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
                 this.LinkLabelDeletePhoto.Visible = true;
@@ -65,7 +65,7 @@ namespace Contacts_App
             else // no image 
             {
                 this.linkLabelChangePhoto.Visible = true;
-                 this.LinkLabelDeletePhoto.Visible = false;
+                this.LinkLabelDeletePhoto.Visible = false;
             }
         }
 
@@ -100,7 +100,7 @@ namespace Contacts_App
                 }
                 else
                 {
-                    MessageBox.Show("The contact does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show("The contact does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     contact = null;
                 }
 
@@ -177,8 +177,8 @@ namespace Contacts_App
                 == DialogResult.Yes)
             {
                 if (CheckBeforeSave())
-                    
-                    if(contact.Save()) MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (contact.Save()) MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         MessageBox.Show("An error occurred while saving the contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -202,9 +202,9 @@ namespace Contacts_App
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
             openFileDialog1.Multiselect = false;
 
-            openFileDialog1.FileName = "Photo.png"; 
+            openFileDialog1.FileName = "Photo.png";
 
-            if (openFileDialog1.ShowDialog() ==DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.contact.ImagePath = openFileDialog1.FileName;
 
@@ -217,6 +217,61 @@ namespace Contacts_App
         private void LinkLabelDeletePhoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.contact.ImagePath = "";
+
+        }
+
+
+        // Check Before Leaving the TextBox if it is empty or not
+        private void TextBoxes_Validating(object sender, CancelEventArgs e)
+        {
+            var Tb = sender as TextBox;
+
+            if (String.IsNullOrEmpty(Tb.Text))
+            {
+                e.Cancel = true; // you cann't leve the textbox empty
+                errorProvider1.SetError(Tb, "This Field Is Required.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(Tb, ""); // to disable error provider if the user has filled the textbox
+            }
+
+        }
+
+        private void cbCountryName_Validating(object sender, CancelEventArgs e)
+        {
+            var cb = sender as ComboBox;
+            if (cb== null || cb.SelectedItem == null ) return; 
+
+            if (String.IsNullOrEmpty(cb.SelectedItem.ToString()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cb, "Please select a country.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cb, "");
+            }
+
+
+        }
+
+        private void mtbPhone_Validating(object sender, CancelEventArgs e)
+        {
+            var mtb = sender as MaskedTextBox;
+            if(mtb.MaskCompleted == false)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(mtb, "Please enter a valid Data!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(mtb, "");
+            }
+
 
         }
 
