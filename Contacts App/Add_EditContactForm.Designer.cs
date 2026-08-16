@@ -100,7 +100,7 @@
             btnCancel.Location = new Point(110, 434);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(110, 40);
-            btnCancel.TabIndex = 3;
+            btnCancel.TabIndex = 0;
             btnCancel.Text = "Cancel";
             btnCancel.TextAlign = ContentAlignment.TopCenter;
             btnCancel.UseVisualStyleBackColor = false;
@@ -285,8 +285,10 @@
             // 
             // Add_EditContactForm
             // 
+            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
             ClientSize = new Size(536, 482);
             Controls.Add(LinkLabelDeletePhoto);
             Controls.Add(linkLabelChangePhoto);
@@ -310,6 +312,7 @@
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Add_EditContactForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New Contact";
             Load += Add_EditContactForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

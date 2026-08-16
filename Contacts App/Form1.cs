@@ -108,6 +108,7 @@ namespace Contacts_App
                             selectedContactID = -1; // rest selected contact ID after deletion
 
                             MessageBox.Show("Contact deleted successfully.", "Delete Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadAllContacts(); // Refresh the DataGridView after editing a contact
                         }
 
                     }

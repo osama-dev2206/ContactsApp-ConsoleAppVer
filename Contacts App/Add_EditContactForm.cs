@@ -31,7 +31,7 @@ namespace Contacts_App
             else
             {
                 _Mode = enFormMode.Edit; // contact is on db and we want to edit it
-                this.linkLabelChangePhoto.Text = "Edit Contact";
+                this.labNewFormState.Text = "Edit Contact";
                 LoadContactData();
                 LoadPicture();
          
@@ -75,7 +75,7 @@ namespace Contacts_App
             if (_Mode == enFormMode.Edit)
             {
 
-                if (clsContact.GetContactById(contact.ContactID) != null)
+                if (clsContact.GetContactById(this.contactId) != null)
                 {
                     contact = clsContact.GetContactById(this.contactId);
                     this.tbFirstName.Text = contact.FirstName;
