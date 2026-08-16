@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_EditContactForm));
             pictureBox1 = new PictureBox();
-            labNewForm = new Label();
+            labNewFormState = new Label();
             btnSave = new Button();
             btnCancel = new Button();
             tbFirstName = new TextBox();
@@ -62,16 +62,16 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // labNewForm
+            // labNewFormState
             // 
-            labNewForm.Dock = DockStyle.Top;
-            labNewForm.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labNewForm.Location = new Point(0, 0);
-            labNewForm.Name = "labNewForm";
-            labNewForm.Size = new Size(536, 31);
-            labNewForm.TabIndex = 1;
-            labNewForm.Text = "Add New Contact";
-            labNewForm.TextAlign = ContentAlignment.MiddleCenter;
+            labNewFormState.Dock = DockStyle.Top;
+            labNewFormState.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labNewFormState.Location = new Point(0, 0);
+            labNewFormState.Name = "labNewFormState";
+            labNewFormState.Size = new Size(536, 31);
+            labNewFormState.TabIndex = 1;
+            labNewFormState.Text = "Add New Contact";
+            labNewFormState.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnSave
             // 
@@ -82,13 +82,15 @@
             btnSave.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.Location = new Point(297, 434);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(110, 36);
+            btnSave.Size = new Size(110, 40);
             btnSave.TabIndex = 2;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
+            btnCancel.AutoSize = true;
             btnCancel.BackColor = SystemColors.ActiveCaption;
             btnCancel.FlatAppearance.MouseDownBackColor = Color.Blue;
             btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
@@ -96,10 +98,12 @@
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancel.Location = new Point(110, 434);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(110, 36);
+            btnCancel.Size = new Size(110, 40);
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
+            btnCancel.TextAlign = ContentAlignment.TopCenter;
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // tbFirstName
             // 
@@ -110,6 +114,7 @@
             tbFirstName.PlaceholderText = "Enter Your First Name";
             tbFirstName.Size = new Size(214, 23);
             tbFirstName.TabIndex = 4;
+            tbFirstName.TextChanged += tbFirstName_TextChanged;
             // 
             // label1
             // 
@@ -130,6 +135,7 @@
             tbLastName.PlaceholderText = "Enter Your Last Name";
             tbLastName.Size = new Size(214, 23);
             tbLastName.TabIndex = 4;
+            tbLastName.TextChanged += tbLastName_TextChanged;
             // 
             // label2
             // 
@@ -145,10 +151,11 @@
             // 
             mtbEmail.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             mtbEmail.Location = new Point(151, 168);
-            mtbEmail.Mask = "Aaaaaaaaaa@aaaaa.com";
+            mtbEmail.Mask = "Aaaaaaaaaa@AAaaa.com";
             mtbEmail.Name = "mtbEmail";
             mtbEmail.Size = new Size(211, 27);
             mtbEmail.TabIndex = 8;
+            mtbEmail.TextChanged += mtbEmail_TextChanged;
             // 
             // label4
             // 
@@ -164,7 +171,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(36, 210);
+            label5.Location = new Point(40, 210);
             label5.Name = "label5";
             label5.Size = new Size(59, 23);
             label5.TabIndex = 12;
@@ -177,6 +184,7 @@
             mtbPhone.Name = "mtbPhone";
             mtbPhone.Size = new Size(211, 27);
             mtbPhone.TabIndex = 13;
+            mtbPhone.TextChanged += mtbPhone_TextChanged;
             // 
             // tbAddress
             // 
@@ -187,12 +195,13 @@
             tbAddress.PlaceholderText = " Enter Your Address";
             tbAddress.Size = new Size(214, 23);
             tbAddress.TabIndex = 14;
+            tbAddress.TextChanged += tbAddress_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label3.Location = new Point(36, 249);
+            label3.Location = new Point(34, 249);
             label3.Name = "label3";
             label3.Size = new Size(70, 23);
             label3.TabIndex = 15;
@@ -218,6 +227,7 @@
             dtDateOfBirth.Name = "dtDateOfBirth";
             dtDateOfBirth.Size = new Size(266, 27);
             dtDateOfBirth.TabIndex = 17;
+            dtDateOfBirth.ValueChanged += dtDateOfBirth_ValueChanged;
             // 
             // label7
             // 
@@ -240,6 +250,7 @@
             cbCountryName.Size = new Size(266, 28);
             cbCountryName.Sorted = true;
             cbCountryName.TabIndex = 19;
+            cbCountryName.SelectedIndexChanged += cbCountryName_SelectedIndexChanged;
             // 
             // linkLabelChangePhoto
             // 
@@ -288,7 +299,7 @@
             Controls.Add(tbFirstName);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
-            Controls.Add(labNewForm);
+            Controls.Add(labNewFormState);
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Add_EditContactForm";
@@ -302,7 +313,7 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Label labNewForm;
+        private Label labNewFormState;
         private Button btnSave;
         private Button btnCancel;
         private TextBox tbFirstName;
