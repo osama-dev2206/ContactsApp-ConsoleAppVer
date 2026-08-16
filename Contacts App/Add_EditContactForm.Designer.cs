@@ -35,10 +35,18 @@
             btnCancel = new Button();
             tbFirstName = new TextBox();
             label1 = new Label();
-            textBox2 = new TextBox();
+            tbLastName = new TextBox();
             label2 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
+            mtbEmail = new MaskedTextBox();
             label4 = new Label();
+            label5 = new Label();
+            mtbPhone = new MaskedTextBox();
+            tbAddress = new TextBox();
+            label3 = new Label();
+            label6 = new Label();
+            dtDateOfBirth = new DateTimePicker();
+            label7 = new Label();
+            cbCountryName = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -95,7 +103,7 @@
             // 
             tbFirstName.BorderStyle = BorderStyle.None;
             tbFirstName.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbFirstName.Location = new Point(110, 70);
+            tbFirstName.Location = new Point(155, 70);
             tbFirstName.Name = "tbFirstName";
             tbFirstName.PlaceholderText = "Enter Your First Name";
             tbFirstName.Size = new Size(214, 23);
@@ -104,60 +112,151 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(6, 70);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label1.Location = new Point(25, 70);
             label1.Name = "label1";
             label1.Size = new Size(98, 23);
             label1.TabIndex = 5;
             label1.Text = "First Name ";
             // 
-            // textBox2
+            // tbLastName
             // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(110, 120);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Enter Your Last Name";
-            textBox2.Size = new Size(214, 23);
-            textBox2.TabIndex = 4;
+            tbLastName.BorderStyle = BorderStyle.None;
+            tbLastName.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tbLastName.Location = new Point(149, 120);
+            tbLastName.Name = "tbLastName";
+            tbLastName.PlaceholderText = "Enter Your Last Name";
+            tbLastName.Size = new Size(214, 23);
+            tbLastName.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(10, 120);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label2.Location = new Point(26, 120);
             label2.Name = "label2";
             label2.Size = new Size(91, 23);
             label2.TabIndex = 7;
             label2.Text = "Last Name";
             // 
-            // maskedTextBox1
+            // mtbEmail
             // 
-            maskedTextBox1.Location = new Point(110, 168);
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(211, 27);
-            maskedTextBox1.TabIndex = 8;
+            mtbEmail.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            mtbEmail.Location = new Point(151, 168);
+            mtbEmail.Mask = "Aaaaaaaaaa@aaaaa.com";
+            mtbEmail.Name = "mtbEmail";
+            mtbEmail.Size = new Size(211, 27);
+            mtbEmail.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(25, 170);
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label4.Location = new Point(44, 169);
             label4.Name = "label4";
             label4.Size = new Size(51, 23);
             label4.TabIndex = 10;
             label4.Text = "Email";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label5.Location = new Point(36, 210);
+            label5.Name = "label5";
+            label5.Size = new Size(59, 23);
+            label5.TabIndex = 12;
+            label5.Text = "Phone";
+            // 
+            // mtbPhone
+            // 
+            mtbPhone.Location = new Point(151, 210);
+            mtbPhone.Mask = "\\(\\+\\2\\0\\)\\ 0000000000";
+            mtbPhone.Name = "mtbPhone";
+            mtbPhone.Size = new Size(211, 27);
+            mtbPhone.TabIndex = 13;
+            // 
+            // tbAddress
+            // 
+            tbAddress.BorderStyle = BorderStyle.None;
+            tbAddress.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tbAddress.Location = new Point(149, 249);
+            tbAddress.Name = "tbAddress";
+            tbAddress.PlaceholderText = " Enter Your Address";
+            tbAddress.Size = new Size(214, 23);
+            tbAddress.TabIndex = 14;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label3.Location = new Point(36, 249);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 23);
+            label3.TabIndex = 15;
+            label3.Text = "Address";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label6.Location = new Point(6, 286);
+            label6.Name = "label6";
+            label6.Size = new Size(111, 23);
+            label6.TabIndex = 16;
+            label6.Text = "Date Of Birth";
+            // 
+            // dtDateOfBirth
+            // 
+            dtDateOfBirth.CalendarFont = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtDateOfBirth.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtDateOfBirth.Format = DateTimePickerFormat.Short;
+            dtDateOfBirth.Location = new Point(123, 284);
+            dtDateOfBirth.MinDate = new DateTime(2026, 8, 16, 0, 0, 0, 0);
+            dtDateOfBirth.Name = "dtDateOfBirth";
+            dtDateOfBirth.Size = new Size(266, 27);
+            dtDateOfBirth.TabIndex = 17;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label7.Location = new Point(0, 340);
+            label7.Name = "label7";
+            label7.Size = new Size(124, 23);
+            label7.TabIndex = 18;
+            label7.Text = "Country Name";
+            // 
+            // cbCountryName
+            // 
+            cbCountryName.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCountryName.FlatStyle = FlatStyle.Popup;
+            cbCountryName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cbCountryName.FormattingEnabled = true;
+            cbCountryName.Location = new Point(127, 335);
+            cbCountryName.Name = "cbCountryName";
+            cbCountryName.Size = new Size(266, 28);
+            cbCountryName.Sorted = true;
+            cbCountryName.TabIndex = 19;
             // 
             // Add_EditContactForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(536, 482);
+            Controls.Add(cbCountryName);
+            Controls.Add(label7);
+            Controls.Add(dtDateOfBirth);
+            Controls.Add(label6);
+            Controls.Add(label3);
+            Controls.Add(tbAddress);
+            Controls.Add(mtbPhone);
+            Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(maskedTextBox1);
+            Controls.Add(mtbEmail);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(tbLastName);
             Controls.Add(tbFirstName);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -179,9 +278,17 @@
         private Button btnCancel;
         private TextBox tbFirstName;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox tbLastName;
         private Label label2;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox mtbEmail;
         private Label label4;
+        private Label label5;
+        private MaskedTextBox mtbPhone;
+        private TextBox tbAddress;
+        private Label label3;
+        private Label label6;
+        private DateTimePicker dtDateOfBirth;
+        private Label label7;
+        private ComboBox cbCountryName;
     }
 }
