@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using static Contacts_App___Data_Access_Layer.clsDbSettings;
 
@@ -85,7 +86,44 @@ namespace Contacts_App___Data_Access_Layer
 
         }
 
+    
+
+
+
+            public static DataTable ReturnContactRecordByID( int ContactID)
+            {
+             DataTable dt = new DataTable();
+            try
+            {
+                clsDbSettings.DbConnection.Open();
+                SqlCommand Command = Cmd(ContactID);
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if(Reader!=null && Reader.HasRows)
+                {
+                    dt.Load(Reader); 
+                }
+
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+            
+            }
+            finally
+            {
+                DbConnection.Close();
+            }
+
+            return dt;
+
+        }
+
     }
+
+
+
 
 
 }

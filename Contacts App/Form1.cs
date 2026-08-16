@@ -17,6 +17,7 @@ namespace Contacts_App
         {
             InitializeComponent();
             LoadAllContacts();
+            DGV.Focus();
         }
 
         private void LoadAllContacts()
@@ -24,8 +25,18 @@ namespace Contacts_App
             DGV.DataSource = clsContact.GetAllContacts();
         }
 
+        // Search 
+
+
         private void AddContact_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            int.TryParse(tbSearch.ToString(), out int ContactID);
+            DGV.DataSource = clsContact.GetContactById(ContactID);
 
         }
 

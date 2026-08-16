@@ -33,7 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             grbMain = new GroupBox();
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
+            tbSearch = new TextBox();
             label1 = new Label();
             DGV = new DataGridView();
             grbMain.SuspendLayout();
@@ -45,7 +45,7 @@
             // 
             grbMain.BackColor = Color.FromArgb(64, 64, 64);
             grbMain.Controls.Add(pictureBox1);
-            grbMain.Controls.Add(textBox1);
+            grbMain.Controls.Add(tbSearch);
             grbMain.Controls.Add(label1);
             grbMain.Dock = DockStyle.Top;
             grbMain.ForeColor = Color.White;
@@ -68,14 +68,17 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += AddContact_Click;
             // 
-            // textBox1
+            // tbSearch
             // 
-            textBox1.BackColor = SystemColors.InactiveCaption;
-            textBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(296, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(405, 31);
-            textBox1.TabIndex = 4;
+            tbSearch.BackColor = SystemColors.InactiveCaption;
+            tbSearch.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tbSearch.Location = new Point(296, 71);
+            tbSearch.Name = "tbSearch";
+            tbSearch.PlaceholderText = "search using contact id";
+            tbSearch.Size = new Size(405, 31);
+            tbSearch.TabIndex = 4;
+            tbSearch.TextAlign = HorizontalAlignment.Center;
+            tbSearch.TextChanged += tbSearch_TextChanged;
             // 
             // label1
             // 
@@ -146,7 +149,7 @@
         private System.Windows.Forms.GroupBox grbMain;
         private System.Windows.Forms.Label label1;
         private DataGridView DGV;
-        private TextBox textBox1;
+        private TextBox tbSearch;
         private PictureBox pictureBox1;
     }
 }

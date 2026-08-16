@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Contacts_App___Data_Access_Layer; // import the data access layer library 
@@ -70,6 +71,10 @@ namespace Contacts_App___Bussiness_Layer
         }
 
 
+        public static DataTable GetContactRecord(int ContactId) // #2
+        {
+            return DataAccessForSearchContact.ReturnContactRecordByID(ContactId);
+        }
 
     }
 }

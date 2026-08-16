@@ -47,6 +47,8 @@
             dtDateOfBirth = new DateTimePicker();
             label7 = new Label();
             cbCountryName = new ComboBox();
+            linkLabelChangePhoto = new LinkLabel();
+            LinkLabelDeletePhoto = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -239,11 +241,37 @@
             cbCountryName.Sorted = true;
             cbCountryName.TabIndex = 19;
             // 
+            // linkLabelChangePhoto
+            // 
+            linkLabelChangePhoto.AutoSize = true;
+            linkLabelChangePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabelChangePhoto.Location = new Point(408, 217);
+            linkLabelChangePhoto.Name = "linkLabelChangePhoto";
+            linkLabelChangePhoto.Size = new Size(103, 18);
+            linkLabelChangePhoto.TabIndex = 20;
+            linkLabelChangePhoto.TabStop = true;
+            linkLabelChangePhoto.Text = "change photo";
+            linkLabelChangePhoto.Visible = false;
+            // 
+            // LinkLabelDeletePhoto
+            // 
+            LinkLabelDeletePhoto.AutoSize = true;
+            LinkLabelDeletePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LinkLabelDeletePhoto.Location = new Point(412, 253);
+            LinkLabelDeletePhoto.Name = "LinkLabelDeletePhoto";
+            LinkLabelDeletePhoto.Size = new Size(94, 18);
+            LinkLabelDeletePhoto.TabIndex = 21;
+            LinkLabelDeletePhoto.TabStop = true;
+            LinkLabelDeletePhoto.Text = "delete photo";
+            LinkLabelDeletePhoto.Visible = false;
+            // 
             // Add_EditContactForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(536, 482);
+            Controls.Add(LinkLabelDeletePhoto);
+            Controls.Add(linkLabelChangePhoto);
             Controls.Add(cbCountryName);
             Controls.Add(label7);
             Controls.Add(dtDateOfBirth);
@@ -290,5 +318,7 @@
         private DateTimePicker dtDateOfBirth;
         private Label label7;
         private ComboBox cbCountryName;
+        private LinkLabel linkLabelChangePhoto;
+        private LinkLabel LinkLabelDeletePhoto;
     }
 }
