@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -36,9 +37,13 @@
             tbSearch = new TextBox();
             label1 = new Label();
             DGV = new DataGridView();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            tsEdit = new ToolStripMenuItem();
+            tsDelete = new ToolStripMenuItem();
             grbMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // grbMain
@@ -125,6 +130,29 @@
             DGV.TabIndex = 1;
             DGV.SelectionChanged += DGV_SelectionChanged;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { tsEdit, tsDelete });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(215, 84);
+            contextMenuStrip1.ItemClicked += contextMenuStrip1_ItemClicked;
+            // 
+            // tsEdit
+            // 
+            tsEdit.Image = (Image)resources.GetObject("tsEdit.Image");
+            tsEdit.Name = "tsEdit";
+            tsEdit.Size = new Size(214, 26);
+            tsEdit.Text = "Edit";
+            // 
+            // tsDelete
+            // 
+            tsDelete.Image = (Image)resources.GetObject("tsDelete.Image");
+            tsDelete.Name = "tsDelete";
+            tsDelete.Size = new Size(214, 26);
+            tsDelete.Text = "Delete";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -142,6 +170,7 @@
             grbMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
 
         }
@@ -153,6 +182,9 @@
         private DataGridView DGV;
         private TextBox tbSearch;
         private PictureBox pictureBox1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem tsEdit;
+        private ToolStripMenuItem tsDelete;
     }
 }
 

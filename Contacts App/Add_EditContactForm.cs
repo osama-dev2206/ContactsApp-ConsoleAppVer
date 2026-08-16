@@ -32,8 +32,9 @@ namespace Contacts_App
             {
                 _Mode = enFormMode.Edit; // contact is on db and we want to edit it
                 this.linkLabelChangePhoto.Text = "Edit Contact";
+                LoadContactData();
                 LoadPicture();
-                LoadContactData(); 
+         
             }
 
         }
@@ -55,11 +56,16 @@ namespace Contacts_App
 
         void LoadPicture()
         {
-            if(!String.IsNullOrEmpty(this.contact.ImagePath) && Path.Exists(this.contact.ImagePath) )
+            if(!String.IsNullOrEmpty(this.contact.ImagePath) && Path.Exists(this.contact.ImagePath) ) // there is image 
             {
                 this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
                 this.LinkLabelDeletePhoto.Visible = true;
                 this.linkLabelChangePhoto.Visible = true;
+            }
+            else // no image 
+            {
+                this.linkLabelChangePhoto.Visible = true;
+                 this.LinkLabelDeletePhoto.Visible = false;
             }
         }
 
@@ -68,6 +74,7 @@ namespace Contacts_App
         {
             if (_Mode == enFormMode.Edit)
             {
+
                 if (clsContact.GetContactById(contact.ContactID) != null)
                 {
                     contact = clsContact.GetContactById(this.contactId);
@@ -79,20 +86,24 @@ namespace Contacts_App
                     this.dtDateOfBirth.Value = contact.DateOfBirth;
                     this.cbCountryName.SelectedItem = clsCountries.FindCountryByID(contact.CountryID);
 
-                    if(this.contact.ImagePath != "") // there is image to display
-                    {
-                        this.LinkLabelDeletePhoto.Visible= true;
-                        this.linkLabelChangePhoto.Visible = true;
-                    }
-                    else // no image  
-                    {
-                        this.linkLabelChangePhoto.Visible = true;
-                        this.LinkLabelDeletePhoto .Visible = false;
-                    }
+                    //if (!String.IsNullOrEmpty(contact.ImagePath)) // there is image to display
+                    //{
+                    //    this.LinkLabelDeletePhoto.Visible = true;
+                    //    this.linkLabelChangePhoto.Visible = true;
+                    //}
+                    //else // no image  
+                    //{
+                    //    this.linkLabelChangePhoto.Visible = true;
+                    //    this.LinkLabelDeletePhoto.Visible = false;
+                    //}
 
                 }
                 else
+                {
+                    MessageBox.Show("The contact does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                     contact = null;
+                }
+
 
             }
 
