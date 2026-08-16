@@ -16,8 +16,13 @@ namespace Contacts_App
         public frmMain()
         {
             InitializeComponent();
+ 
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            DGV.AutoGenerateColumns = true;
             LoadAllContacts();
-            DGV.Focus();
         }
 
         private void LoadAllContacts()
@@ -40,7 +45,7 @@ namespace Contacts_App
             {
                 int.TryParse(tbSearch.Text.ToString(), out int ContactID);
 
-              DataTable dt =  clsContact.GetContactRecord(ContactID);
+                DataTable dt = clsContact.GetContactRecord(ContactID);
 
                 if (dt != null)
                     DGV.DataSource = dt;
@@ -52,6 +57,13 @@ namespace Contacts_App
             {
                 LoadAllContacts(); // load all contacts if search box is empty
             }
+
+        }
+
+        private void DGV_SelectionChanged(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Selected Contact ID: " + DGV.SelectedColumns.ToString());
 
         }
 

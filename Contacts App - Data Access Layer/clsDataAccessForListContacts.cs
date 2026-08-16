@@ -9,10 +9,7 @@ namespace Contacts_App___Data_Access_Layer
     {
         static string Query()
         {
-            return @"Select Contacts.FirstName ,Contacts.LastName ,Contacts.Email ,
-              Contacts.Phone ,Contacts.Address 
-            ,Contacts.DateOfBirth
-          , Countries.CountryName
+            return @"Select * 
             From Contacts
                Inner Join Countries
              On Contacts.CountryID = Countries.CountryID;";

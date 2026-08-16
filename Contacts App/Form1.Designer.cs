@@ -123,6 +123,7 @@
             DGV.RowHeadersWidth = 51;
             DGV.Size = new Size(964, 340);
             DGV.TabIndex = 1;
+            DGV.SelectionChanged += DGV_SelectionChanged;
             // 
             // frmMain
             // 
@@ -136,6 +137,7 @@
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Contacts Management";
+            Load += frmMain_Load;
             grbMain.ResumeLayout(false);
             grbMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
