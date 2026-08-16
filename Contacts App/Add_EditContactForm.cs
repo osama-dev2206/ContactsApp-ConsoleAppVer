@@ -176,12 +176,14 @@ namespace Contacts_App
             if (MessageBox.Show("Are you sure you want to save these changes?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 == DialogResult.Yes)
             {
+
                 if (CheckBeforeSave())
+                {
 
                     if (contact.Save()) MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         MessageBox.Show("An error occurred while saving the contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                }
                 else
                     MessageBox.Show("Please fill in all required fields before saving.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 

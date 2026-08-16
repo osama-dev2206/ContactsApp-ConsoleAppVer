@@ -60,14 +60,14 @@
             grbMain.Margin = new Padding(3, 4, 3, 4);
             grbMain.Name = "grbMain";
             grbMain.Padding = new Padding(3, 4, 3, 4);
-            grbMain.Size = new Size(1775, 139);
+            grbMain.Size = new Size(1208, 139);
             grbMain.TabIndex = 0;
             grbMain.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1034, 52);
+            pictureBox1.Location = new Point(829, 59);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(91, 47);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -79,7 +79,7 @@
             // 
             tbSearch.BackColor = SystemColors.InactiveCaption;
             tbSearch.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbSearch.Location = new Point(607, 65);
+            tbSearch.Location = new Point(402, 67);
             tbSearch.Name = "tbSearch";
             tbSearch.PlaceholderText = "search using contact id";
             tbSearch.Size = new Size(405, 31);
@@ -94,7 +94,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 19.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(477, 52);
+            label1.Location = new Point(272, 54);
             label1.Name = "label1";
             label1.Size = new Size(124, 45);
             label1.TabIndex = 1;
@@ -129,7 +129,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DGV.RowHeadersWidth = 51;
-            DGV.Size = new Size(1775, 340);
+            DGV.Size = new Size(1208, 340);
             DGV.TabIndex = 1;
             DGV.SelectionChanged += DGV_SelectionChanged;
             // 
@@ -164,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1775, 479);
+            ClientSize = new Size(1208, 479);
             Controls.Add(DGV);
             Controls.Add(grbMain);
             Icon = (Icon)resources.GetObject("$this.Icon");

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using Microsoft.Data.SqlClient;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Contacts_App___Data_Access_Layer
 {
@@ -9,10 +10,23 @@ namespace Contacts_App___Data_Access_Layer
     {
         static string Query()
         {
-            return @"Select * 
-            From Contacts
-               Inner Join Countries
-             On Contacts.CountryID = Countries.CountryID;";
+
+            return @" SELECT Contacts.ContactID,
+           CONCAT(Contacts.FirstName , ' ' , Contacts.LastName) As FullName ,
+          Contacts.Email,
+         Contacts.Phone,
+       Contacts.Address,
+       Cast (Contacts.DateOfBirth AS DATE),
+       Contacts.ImagePath,
+       Countries.CountryName , 
+       Countries.Code ,
+       Countries.PhoneCode
+       FROM   Contacts
+       INNER JOIN
+       Countries
+       ON Countries.CountryID = Contacts.CountryID;
+         Order By Contacts.ContactID";
+
         }
 
         public static DataTable GetAllContactsFromDbInDT()
