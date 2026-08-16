@@ -73,6 +73,8 @@ namespace Contacts_App___Bussiness_Layer
 
         public static DataTable GetContactRecord(int ContactId) // #2
         {
+            if( ! int.TryParse(ContactId.ToString(), out int id)  ) return null; 
+      
             return DataAccessForSearchContact.ReturnContactRecordByID(ContactId);
         }
 

@@ -53,7 +53,7 @@
             grbMain.Margin = new Padding(3, 4, 3, 4);
             grbMain.Name = "grbMain";
             grbMain.Padding = new Padding(3, 4, 3, 4);
-            grbMain.Size = new Size(957, 139);
+            grbMain.Size = new Size(964, 139);
             grbMain.TabIndex = 0;
             grbMain.TabStop = false;
             // 
@@ -114,21 +114,21 @@
             DGV.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("SF Pro Display", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DGV.RowHeadersWidth = 51;
-            DGV.Size = new Size(957, 340);
+            DGV.Size = new Size(964, 340);
             DGV.TabIndex = 1;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(957, 479);
+            ClientSize = new Size(964, 479);
             Controls.Add(DGV);
             Controls.Add(grbMain);
             Icon = (Icon)resources.GetObject("$this.Icon");

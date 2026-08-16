@@ -25,7 +25,7 @@ namespace Contacts_App
             DGV.DataSource = clsContact.GetAllContacts();
         }
 
-        // Search 
+
 
 
         private void AddContact_Click(object sender, EventArgs e)
@@ -33,10 +33,25 @@ namespace Contacts_App
 
         }
 
+        // Search //
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            int.TryParse(tbSearch.ToString(), out int ContactID);
-            DGV.DataSource = clsContact.GetContactById(ContactID);
+            if (!String.IsNullOrEmpty(tbSearch.Text.ToString()))
+            {
+                int.TryParse(tbSearch.Text.ToString(), out int ContactID);
+
+              DataTable dt =  clsContact.GetContactRecord(ContactID);
+
+                if (dt != null)
+                    DGV.DataSource = dt;
+                else
+                    MessageBox.Show("No contact found with the given ID.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                LoadAllContacts(); // load all contacts if search box is empty
+            }
 
         }
 
