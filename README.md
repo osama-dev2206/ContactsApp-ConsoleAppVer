@@ -1,4 +1,4 @@
-# Contacts App — Comprehensive Project Documentation
+# Contacts App Project Documentation
 
 ---
 
