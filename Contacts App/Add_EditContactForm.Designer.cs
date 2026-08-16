@@ -293,6 +293,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Add_EditContactForm";
             Text = "Add New Contact";
+            Load += Add_EditContactForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

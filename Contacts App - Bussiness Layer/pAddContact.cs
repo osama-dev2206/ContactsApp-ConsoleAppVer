@@ -25,6 +25,13 @@ namespace Contacts_App___Bussiness_Layer
 
         }
 
+
+        public clsContact()
+        {
+            _Mode = enMode.Add; // change the state to add 
+        }
+
+
         private bool AddContact()
         {
             // will check if the id !=-1 which means the record has inserted 

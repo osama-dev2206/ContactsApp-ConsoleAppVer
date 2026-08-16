@@ -13,6 +13,10 @@ namespace Contacts_App
 {
     public partial class frmMain : Form
     {
+        private int selectedContactID = -1; // Variable to hold the selected contact ID
+          enum enFormMode : byte { Add = 1, Edit = 2 }
+        enFormMode _Mode = enFormMode.Add;
+
         public frmMain()
         {
             InitializeComponent();
@@ -28,14 +32,7 @@ namespace Contacts_App
         private void LoadAllContacts()
         {
             DGV.DataSource = clsContact.GetAllContacts();
-        }
-
-
-
-
-        private void AddContact_Click(object sender, EventArgs e)
-        {
-
+   
         }
 
         // Search //
@@ -60,11 +57,29 @@ namespace Contacts_App
 
         }
 
+
         private void DGV_SelectionChanged(object sender, EventArgs e)
         {
+            if(DGV.CurrentRow!=null && int.TryParse(DGV.CurrentRow.Cells[0].Value.ToString(), out int ID))
+            {
+               this.selectedContactID = ID; 
+            }
 
-            MessageBox.Show("Selected Contact ID: " + DGV.SelectedColumns.ToString());
+        }
 
+
+
+        private void AddContact_Click(object sender, EventArgs e)
+        {
+            _Mode = enFormMode.Add;
+            /*
+             *  id = -1 ==> add new contact
+             */
+            this.selectedContactID = -1; // Reset selected contact ID for adding new contact
+            Add_EditContactForm AddNewContactForm = new Add_EditContactForm(this.selectedContactID);
+            AddNewContactForm.ShowDialog();
+
+            LoadAllContacts(); // Refresh the DataGridView after adding a new contact
         }
 
 
