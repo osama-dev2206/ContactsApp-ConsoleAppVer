@@ -221,7 +221,7 @@ namespace Contacts_App
         }
 
 
-        // Check Before Leaving the TextBox if it is empty or not
+        // Check Before Leaving the TextBox && Mask Text Box && Combo Box if it is empty or not
         private void TextBoxes_Validating(object sender, CancelEventArgs e)
         {
             var Tb = sender as TextBox;
@@ -242,7 +242,7 @@ namespace Contacts_App
         private void cbCountryName_Validating(object sender, CancelEventArgs e)
         {
             var cb = sender as ComboBox;
-            if (cb== null || cb.SelectedItem == null ) return; 
+            if (cb == null || cb.SelectedItem == null) return;
 
             if (String.IsNullOrEmpty(cb.SelectedItem.ToString()))
             {
@@ -261,7 +261,7 @@ namespace Contacts_App
         private void mtbPhone_Validating(object sender, CancelEventArgs e)
         {
             var mtb = sender as MaskedTextBox;
-            if(mtb.MaskCompleted == false)
+            if (mtb.MaskCompleted == false)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(mtb, "Please enter a valid Data!");
@@ -273,6 +273,11 @@ namespace Contacts_App
             }
 
 
+        }
+
+        private void Add_EditContactForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false; // allow the form to close
         }
 
 

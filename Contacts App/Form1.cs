@@ -25,6 +25,7 @@ namespace Contacts_App
         private void frmMain_Load(object sender, EventArgs e)
         {
             DGV.AutoGenerateColumns = true;
+            grbMain.Focus();
             LoadAllContacts();
         }
 
@@ -119,7 +120,28 @@ namespace Contacts_App
 
         }
 
+        private void tbSearch_Validating(object sender, CancelEventArgs e)
+        {
 
+            if (string.IsNullOrEmpty(tbSearch.Text)) return;
+
+            if (!int.TryParse(tbSearch.Text, out _)) // isn't valid contact id  
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbSearch, "Please enter a valid contact ID.");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(tbSearch, "");
+            }
+
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+        }
 
 
     }

@@ -329,6 +329,7 @@
             Name = "Add_EditContactForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New Contact";
+            FormClosing += Add_EditContactForm_FormClosing;
             Load += Add_EditContactForm_Load;
             Validating += cbCountryName_Validating;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
