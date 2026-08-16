@@ -1,4 +1,5 @@
-﻿using Contacts_App___Bussiness_Layer;
+﻿using Contacts_App.Properties;
+using Contacts_App___Bussiness_Layer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Contacts_App
 {
@@ -143,7 +145,7 @@ namespace Contacts_App
 
         private void cbCountryName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cbCountryName.SelectedIndex != -1 && cbCountryName != null)
+            if (this.cbCountryName.SelectedIndex != -1 && cbCountryName != null && cbCountryName.SelectedItem != null)
             {
                 clsCountries c =  clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()); // find the country object by name to get the country id 
                 if (c != null)
@@ -217,7 +219,7 @@ namespace Contacts_App
         private void LinkLabelDeletePhoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.contact.ImagePath = "";
-
+            pictureBox1.Image = null;
         }
 
 

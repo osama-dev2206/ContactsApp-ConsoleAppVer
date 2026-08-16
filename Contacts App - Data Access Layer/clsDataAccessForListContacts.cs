@@ -16,7 +16,7 @@ namespace Contacts_App___Data_Access_Layer
           Contacts.Email,
          Contacts.Phone,
        Contacts.Address,
-       Cast (Contacts.DateOfBirth AS DATE),
+       Cast (Contacts.DateOfBirth AS DATE) AS DateOfBirth,
        Contacts.ImagePath,
        Countries.CountryName , 
        Countries.Code ,

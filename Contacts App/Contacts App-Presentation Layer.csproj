@@ -12,7 +12,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Default PFP.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Contacts App - Bussiness Layer\Contacts App - Bussiness Layer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Default PFP.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

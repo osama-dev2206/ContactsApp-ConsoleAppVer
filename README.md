@@ -11,16 +11,15 @@
    - 3.2 [Layer Responsibilities](#32-layer-responsibilities)
    - 3.3 [Dependency Flow](#33-dependency-flow)
 4. [Project Structure & File Organization](#4-project-structure--file-organization)
-   - 4.1 [Presentation Layer](#41-presentation-layer-console-app-ver)
+   - 4.1 [Presentation Layer](#41-presentation-layer-contacts-app)
    - 4.2 [Business Logic Layer](#42-business-logic-layer-bussiness-layer)
    - 4.3 [Data Access Layer](#43-data-access-layer-data-access-layer)
 5. [Features](#5-features)
    - 5.1 [Contact Management Features](#51-contact-management-features)
-   - 5.2 [Country Management Features](#52-country-management-features)
 6. [Class Reference](#6-class-reference)
    - 6.1 [Business Logic Classes](#61-business-logic-classes)
    - 6.2 [Data Access Classes](#62-data-access-classes)
-   - 6.3 [Presentation Classes](#63-presentation-classes)
+   - 6.3 [Presentation Classes (Forms)](#63-presentation-classes-forms)
 7. [Validation & Business Rules](#7-validation--business-rules)
    - 7.1 [Business Layer Validations](#71-business-layer-validations)
    - 7.2 [Data Access Layer Validations](#72-data-access-layer-validations)
@@ -30,23 +29,24 @@
 10. [Data Flow Walkthroughs](#10-data-flow-walkthroughs)
     - 10.1 [Adding a New Contact](#101-adding-a-new-contact)
     - 10.2 [Updating an Existing Contact](#102-updating-an-existing-contact)
-    - 10.3 [Adding a New Country (Duplicate Prevention)](#103-adding-a-new-country-duplicate-prevention)
+    - 10.3 [Searching a Contact by ID](#103-searching-a-contact-by-id)
+    - 10.4 [Deleting a Contact](#104-deleting-a-contact)
 
 ---
 
 ## 1. Project Overview
 
-The **Contacts App** is a C# console application designed to manage a contact book backed by a **SQL Server** database. It allows users to create, read, update, and delete (CRUD) both **Contacts** and **Countries**.
+The **Contacts App** is a C# **Windows Forms** desktop application designed to manage a contact book backed by a **SQL Server** database. It allows users to create, read, update, and delete (CRUD) **Contacts** through a graphical user interface.
 
-The application is architecturally split into **three separate C# class library projects**, each representing one tier of the classic **3-Tier Architecture** pattern:
+The application is architecturally split into **three separate C# projects**, each representing one tier of the classic **3-Tier Architecture** pattern:
 
 | Project | Role |
 |---|---|
-| `Contacts App - Console App Ver` | Presentation Layer (UI) |
+| `Contacts App` | Presentation Layer (WinForms UI) |
 | `Contacts App - Bussiness Layer` | Business Logic Layer |
 | `Contacts App - Data Access Layer` | Data Access Layer |
 
-The three projects are assembled into a single Visual Studio solution (`Contacts App - Console App Ver.slnx`).
+The three projects are assembled into a single Visual Studio solution (`Contacts App.slnx`).
 
 ---
 
@@ -55,7 +55,7 @@ The three projects are assembled into a single Visual Studio solution (`Contacts
 | Component | Technology |
 |---|---|
 | **Language** | C# (.NET) |
-| **Application Type** | Console Application |
+| **Application Type** | Windows Forms Desktop Application |
 | **Database** | Microsoft SQL Server (`ContactsDB`) |
 | **Data Access** | ADO.NET (`Microsoft.Data.SqlClient`) |
 | **ORM** | None — raw parameterized SQL queries |
@@ -70,22 +70,18 @@ The three projects are assembled into a single Visual Studio solution (`Contacts
 
 ```mermaid
 graph TD
-    subgraph "Tier 1 — Presentation Layer"
+    subgraph "Tier 1 — Presentation Layer (WinForms)"
         direction TB
-        PL["🖥️ Console App Ver\n(Contacts App - Presentation Layer.csproj)"]
-        PM["clsMainMenu"]
-        PCM["clsCountryMenu"]
-        PS["Screen Classes\nclsAddNewContactScreen\nclsUpdateContactScreen\nclsDeleteScreen\nclsSearchContactScreen\nclsGetAllContactsScreen\nclsIsContactExitsScreen\nclsAddCountryScreen\nclsUpdateCountryScreen\nclsDeleteCountryScreen\nclsCountryByNameScreen\nclsFindCountryByIDScreen\nclsCheckExistenceScreen\nclsIsCountryExistByIDScreen\nclsGetAllCountriesScreen"]
-        PU["clsScreenUtils\n(Shared display helpers)"]
-        PM --> PS
-        PCM --> PS
-        PS --> PU
+        PL["🖥️ Contacts App\n(Contacts App-Presentation Layer.csproj)"]
+        F1["frmMain\n- DataGridView (DGV)\n- Search TextBox (tbSearch)\n- Add button (PictureBox)\n- ContextMenuStrip (Edit / Delete)"]
+        F2["Add_EditContactForm\n- TextBoxes: FirstName, LastName, Address\n- MaskedTextBoxes: Email, Phone\n- DateTimePicker: DateOfBirth\n- ComboBox: CountryName\n- PictureBox: Profile photo\n- Save / Cancel buttons"]
+        F1 --> F2
     end
 
     subgraph "Tier 2 — Business Logic Layer"
         direction TB
         BL["📦 Bussiness Layer\n(Contacts App - Bussiness Layer.csproj)"]
-        BC["clsContact  partial class\n- clsContact.cs  (core + GetContactById)\n- pAddContact.cs  (constructor + AddContact)\n- pUpdateContact.cs  (UpdateContact + Save)\n- pDeleteContact.cs  (DeleteContact)\n- pGetAllContacts.cs  (GetAllContacts)\n- pIsContactExist.cs  (IsContactExist)"]
+        BC["clsContact  partial class\n- clsContact.cs  (core + GetContactById + GetContactRecord)\n- pAddContact.cs  (constructor + AddContact)\n- pUpdateContact.cs  (UpdateContact + Save)\n- pDeleteContact.cs  (DeleteContact)\n- pGetAllContacts.cs  (GetAllContacts)\n- pIsContactExist.cs  (IsContactExist)"]
         BCC["clsCountries\n- FindCountryByName\n- FindCountryByID\n- IsCountryExist\n- IsCountryExistByID\n- AddNewCountry (private)\n- UpdateCountry (private)\n- DeleteCountry (static)\n- GetAllCountries (static)\n- Save() (routing method)"]
     end
 
@@ -108,8 +104,9 @@ graph TD
     BL -->|"references DAL"| DA
     DA -->|"ADO.NET SQL queries"| DB
 
-    PS -->|"calls BL classes"| BC
-    PS -->|"calls BL classes"| BCC
+    F1 -->|"calls BL classes"| BC
+    F2 -->|"calls BL classes"| BC
+    F2 -->|"calls BL classes"| BCC
     BC -->|"delegates to DAL"| DC
     BCC -->|"delegates to DAL"| DCO
     DC -->|"SqlCommand / SqlDataReader"| DBS
@@ -123,12 +120,12 @@ graph TD
 
 ### 3.2 Layer Responsibilities
 
-#### Tier 1 — Presentation Layer
-- Renders menus and screen prompts to the console.
-- Reads user input from `Console.ReadLine()` and `Console.ReadKey()`.
-- Performs basic input parsing (e.g., `int.TryParse`, `DateTime.Parse`).
-- Calls Business Logic Layer classes to execute operations.
-- Displays success/failure feedback to the user.
+#### Tier 1 — Presentation Layer (WinForms)
+- Renders a graphical user interface using Windows Forms controls (forms, grids, text boxes, combo boxes, etc.).
+- Reads user input from WinForms controls and validates it using `ErrorProvider` and control-level `Validating` events.
+- Calls Business Logic Layer classes to execute operations (search, add, update, delete).
+- Displays results in a `DataGridView` and provides feedback via `MessageBox` dialogs.
+- Supports photo upload/removal for contacts via `OpenFileDialog`.
 - Contains **zero business logic** and **zero SQL queries**.
 
 #### Tier 2 — Business Logic Layer
@@ -150,10 +147,10 @@ graph TD
 ### 3.3 Dependency Flow
 
 ```
-User Input
+User interacts with WinForms UI
     │
     ▼
-[Presentation Layer]  ──► User sees console output
+[Presentation Layer]  ──► DataGridView / MessageBox / ErrorProvider
     │  calls BL methods
     ▼
 [Business Logic Layer]  ──► Validates, orchestrates, returns domain objects
@@ -169,38 +166,62 @@ User Input
 
 ## 4. Project Structure & File Organization
 
-### 4.1 Presentation Layer (`Console App Ver`)
+### 4.1 Presentation Layer (`Contacts App`)
 
 ```
-Contacts App - Console App Ver/
+Contacts App/
 │
-├── Contacts App - Console App Ver.slnx       ← Solution file
-├── Contacts App - Presentation Layer.csproj  ← Project file (references BL)
-├── Program.cs                                ← Entry point; calls clsMainMenu.ShowMainScreen()
+├── Contacts App.slnx                          ← Solution file
+├── Contacts App-Presentation Layer.csproj     ← Project file (WinForms, references BL)
+├── Program.cs                                 ← Entry point; starts frmMain via Application.Run()
+├── app.manifest                               ← Application manifest (DPI awareness, etc.)
+├── App.config                                 ← App configuration
 │
-├── clsMainMenu.cs           ← Main navigation menu (7 Contact options + exit)
-├── clsCountryMenu.cs        ← Country sub-menu (8 Country options + back)
-├── clsScreenUtils.cs        ← Shared utilities: PrintMenuOption(), DisplayContactInfo()
+│   ── Forms ──
+├── Form1.cs                                   ← frmMain: main list/search/add/edit/delete form
+├── Form1.Designer.cs                          ← Designer-generated layout for frmMain
+├── Form1.resx                                 ← Resources (icons, images) for frmMain
 │
-│   ── Contact Screens ──
-├── clsSearchContactScreen.cs         ← Find contact by ID → display info
-├── clsAddNewContactScreen.cs         ← Collect fields → clsContact.Save()
-├── clsUpdateContactScreen.cs         ← Load contact → edit fields → clsContact.Save()
-├── clsDeleteScreen.cs                ← Input ID → clsContact.DeleteContact()
-├── clsGetAllContactsScreen.cs        ← Tabular list of all contacts
-├── clsIsContactExitsScreen.cs        ← Check if contact exists by ID
-├── clsCheckExistenceScreen'.cs       ← Check if country exists by name
+├── Add_EditContactForm.cs                     ← Dual-mode form: Add New or Edit existing contact
+├── Add_EditContactForm.Designer.cs            ← Designer-generated layout for Add/Edit form
+├── Add_EditContactForm.resx                   ← Resources for Add/Edit form
 │
-│   ── Country Screens ──
-├── clsCountryByNameScreen.cs         ← Find country by name
-├── clsFindCountryByIDScreen.cs       ← Find country by ID
-├── clsAddCountryScreen.cs            ← Collect fields → clsCountries.Save()
-├── clsUpdateCountryScreen.cs         ← Load country → edit fields → clsCountries.Save()
-├── clsDeleteCountryScreen.cs         ← Input ID → clsCountries.DeleteCountry()
-├── clsGetAllCountriesScreen.cs       ← Tabular list of all countries
-├── clsIsCountryExistByIDScreen.cs    ← Check if country exists by ID
-└── clsIsContactExitsScreen.cs        ← Check if contact exists by ID
+│   ── Assets ──
+├── ICONS/                                     ← Application icon assets
+└── Resources/                                 ← Additional embedded resources (images, etc.)
 ```
+
+#### `frmMain` — Main Window Controls
+
+| Control | Name | Purpose |
+|---|---|---|
+| `GroupBox` | `grbMain` | Header bar (dark background) containing the search area and add button |
+| `Label` | `label1` | "Search" label |
+| `TextBox` | `tbSearch` | Search by Contact ID — filters the grid in real-time as text changes |
+| `PictureBox` | `pictureBox1` | Clickable "Add Contact" button (displays an icon) |
+| `DataGridView` | `DGV` | Read-only grid displaying all contacts (auto-generated columns, JOIN with Countries) |
+| `ContextMenuStrip` | `contextMenuStrip1` | Right-click context menu on the form with **Edit** and **Delete** items |
+| `ErrorProvider` | `errorProvider1` | Displays inline validation error icons next to `tbSearch` |
+
+#### `Add_EditContactForm` — Add / Edit Window Controls
+
+| Control | Name | Purpose |
+|---|---|---|
+| `Label` | `labNewFormState` | Shows current mode: "Add New Contact" or "Edit Contact" |
+| `TextBox` | `tbFirstName` | First name input |
+| `TextBox` | `tbLastName` | Last name input |
+| `MaskedTextBox` | `mtbEmail` | Email input with mask validation |
+| `MaskedTextBox` | `mtbPhone` | Phone number input with mask (must be fully completed) |
+| `TextBox` | `tbAddress` | Address input |
+| `DateTimePicker` | `dtDateOfBirth` | Date of birth selector (defaults to `DateTime.Now`) |
+| `ComboBox` | `cbCountryName` | Dropdown populated with all country names from the database |
+| `PictureBox` | `pictureBox1` | Displays the contact's profile photo |
+| `LinkLabel` | `linkLabelChangePhoto` | Opens `OpenFileDialog` to select a photo (jpg/jpeg/png) |
+| `LinkLabel` | `LinkLabelDeletePhoto` | Clears the photo (sets `ImagePath = ""`) |
+| `Button` | `btnSave` | Validates then saves the contact via `clsContact.Save()` |
+| `Button` | `btnCancel` | Closes the form without saving |
+| `ErrorProvider` | `errorProvider1` | Inline validation errors for all required fields |
+| `OpenFileDialog` | `openFileDialog1` | File picker for selecting contact photo |
 
 ### 4.2 Business Logic Layer (`Bussiness Layer`)
 
@@ -260,27 +281,14 @@ Contacts App - Data Access Layer/
 
 ### 5.1 Contact Management Features
 
-| # | Feature | Description |
+| # | Feature | How It Works in the UI |
 |---|---|---|
-| 1 | **Search Contact by ID** | Retrieves a single contact record by its primary key and displays all fields in a formatted box. |
-| 2 | **Add New Contact** | Collects all contact fields from the user and inserts a new record. The new ContactID is returned and displayed. First name and last name are stored in lowercase via SQL `LOWER()`. |
-| 3 | **Update Contact** | Loads an existing contact by ID, allows all fields to be edited, then saves changes. The object's mode automatically switches to `Update`. |
-| 4 | **Delete Contact** | Removes a contact record from the database by ContactID. Displays success or failure. |
-| 5 | **List All Contacts** | Displays all contacts in a formatted table with columns: FirstName, LastName, Email, Phone, Address, DateOfBirth, CountryName. Uses a JOIN with the Countries table to resolve the country name. |
-| 6 | **Check Contact Existence** | Returns a boolean result for whether a contact with a given ID exists in the database. |
-
-### 5.2 Country Management Features
-
-| # | Feature | Description |
-|---|---|---|
-| 1 | **Find Country by Name** | Case-insensitive lookup of a country by its name. Returns CountryID, Code, and PhoneCode. |
-| 2 | **Check Country Existence (by Name)** | Returns a boolean indicating whether a country name exists. Comparison is case-insensitive. |
-| 3 | **Find Country by ID** | Retrieves a country record by its primary key, returning all fields. |
-| 4 | **Check Country Existence (by ID)** | Returns a boolean indicating whether a country with a given ID exists. |
-| 5 | **Add New Country** | Inserts a new country (Name, Code, PhoneCode). Country code is stored in uppercase via SQL `UPPER()`. **Prevents duplicate country names** at the DAL level. |
-| 6 | **Update Country** | Loads an existing country by ID, allows fields to be edited, then saves changes via the `Save()` router. |
-| 7 | **List All Countries** | Displays all country records ordered by CountryID in a formatted tabular layout. |
-| 8 | **Delete Country** | Removes a country record from the database by CountryID. |
+| 1 | **List All Contacts** | On app startup, `frmMain` loads all contacts into the `DataGridView` via `clsContact.GetAllContacts()`. Columns include FirstName, LastName, Email, Phone, Address, DateOfBirth, and CountryName (resolved via JOIN). |
+| 2 | **Search Contact by ID** | Typing in `tbSearch` fires `TextChanged`; calls `clsContact.GetContactRecord(ID)` and updates the grid instantly. Clearing the box reloads all contacts. `ErrorProvider` flags non-integer input on `Validating`. |
+| 3 | **Add New Contact** | Clicking the `PictureBox` (Add button) opens `Add_EditContactForm` in **Add** mode. User fills all fields and clicks **Save**. `CheckBeforeSave()` validates required fields. Calls `clsContact.Save()` → inserts record. |
+| 4 | **Edit Contact** | Right-clicking a grid row and selecting **Edit** opens `Add_EditContactForm` in **Edit** mode, pre-populated with the contact's data. Country name is resolved via `clsCountries.FindCountryByID()`. Clicking **Save** calls `clsContact.Save()` → updates the record. |
+| 5 | **Delete Contact** | Right-clicking a row and selecting **Delete** shows a `MessageBox` confirmation. On **Yes**, calls `clsContact.DeleteContact(selectedContactID)`. Grid reloads on success. |
+| 6 | **Profile Photo** | In `Add_EditContactForm`, `linkLabelChangePhoto` opens an `OpenFileDialog` filtered to jpg/png. The selected path is stored in `contact.ImagePath` and displayed in the `PictureBox`. `LinkLabelDeletePhoto` clears the photo. |
 
 ---
 
@@ -303,8 +311,9 @@ Contacts App - Data Access Layer/
 | `ImagePath` | `string` | Optional file path to a profile image. |
 | `enMode` | `enum` (private) | `Add=2`, `Update=1`, `Remove=3` — controls behavior of `Save()`. |
 | `clsContact(id, ...)` | Private constructor | Populates all fields; sets mode to `Update`. Called only by `GetContactById()`. |
-| `clsContact(firstName, ...)` | Public constructor | Populates all fields except ID; sets mode to `Add`. Used to create new contacts. |
+| `clsContact()` | Public constructor | Default constructor used by `Add_EditContactForm` to hold field values as the user fills in the form. |
 | `GetContactById(int)` | `static clsContact?` | Factory method — retrieves from DB, returns `null` if not found. |
+| `GetContactRecord(int)` | `static DataTable` | Returns the contact's data as a `DataTable` for direct binding to the `DataGridView` during search. |
 | `AddContact()` | `private bool` | Delegates to `DataAccessForAddNewContact`; sets `ContactID` from returned identity. |
 | `UpdateContact()` | `private bool` | Delegates to `clsDataAccessUpdateContact`. |
 | `Save()` | `public bool` | Routes to `AddContact()` or `UpdateContact()` based on `_Mode`. After a successful add, resets mode to `Update`. |
@@ -325,8 +334,8 @@ Contacts App - Data Access Layer/
 | `enMode` | `enum` (private) | `update=1`, `add=2` — controls `Save()` routing. |
 | `clsCountries(id, name, code, phone)` | Private constructor | Populates all fields; mode = `update`. Used by Find methods. |
 | `clsCountries(name, code, phone)` | Public constructor | Populates fields except ID; mode = `add`. Used for new country creation. |
-| `FindCountryByName(string)` | `static clsCountries?` | Trims input, delegates to DAL; returns `null` if not found. |
-| `FindCountryByID(int)` | `static clsCountries?` | Validates integer, delegates to DAL; returns `null` if not found. |
+| `FindCountryByName(string)` | `static clsCountries?` | Trims input, delegates to DAL; returns `null` if not found. Used in `cbCountryName_SelectedIndexChanged` to resolve CountryID from the selected name. |
+| `FindCountryByID(int)` | `static clsCountries?` | Validates integer, delegates to DAL; returns `null` if not found. Used in `Add_EditContactForm` to populate the country ComboBox in Edit mode. |
 | `IsCountryExist(string?)` | `static bool` | Null-guard then delegates to `clsDataAccessForCheckCountryByName`. |
 | `IsCountryExistByID(int)` | `static bool` | Validates integer then delegates to `clsDataAccessForIsCountryExisitById`. |
 | `AddNewCountry()` | `private bool` | Returns `true` if new ID ≠ -1. |
@@ -347,6 +356,7 @@ All DAL classes are `static`. Each encapsulates a private `Query()` method that 
 |---|---|---|
 | `DataAccessForAddNewContact` | `AddNewContactToDB(...)` → `int` | `INSERT INTO Contacts ... SELECT SCOPE_IDENTITY()` — returns new ID or -1 |
 | `DataAccessForSearchContact` | `CheckContactOnDb(ref params)` → `bool` | `SELECT * FROM Contacts WHERE ContactID=@ID` — populates all ref params |
+| `DataAccessForSearchContact` | `ReturnContactRecordByID(int)` → `DataTable` | `SELECT * FROM Contacts WHERE ContactID=@ID` — returns `DataTable` for grid binding |
 | `clsDataAccessUpdateContact` | `UpdateContactInDb(...)` → `bool` | `UPDATE Contacts SET ... WHERE ContactID=@ID` |
 | `clsDataAccessDeleteContact` | `DeleteContactFromDb(int)` → `bool` | `DELETE FROM Contacts WHERE ContactID=@ID` |
 | `clsDataAccessForListContacts` | `GetAllContactsFromDbInDT()` → `DataTable` | `SELECT ... FROM Contacts INNER JOIN Countries ON ...` |
@@ -376,28 +386,13 @@ All DAL classes are `static`. Each encapsulates a private `Query()` method that 
 
 ---
 
-### 6.3 Presentation Classes
+### 6.3 Presentation Classes (Forms)
 
-| Class | Purpose |
-|---|---|
-| `Program` | Entry point — calls `clsMainMenu.ShowMainScreen()` |
-| `clsMainMenu` | Top-level menu loop; routes to 7 contact/country operations |
-| `clsCountryMenu` | Country sub-menu loop; routes to 8 country operations |
-| `clsScreenUtils` | Shared helpers: `PrintMenuOption()`, `DisplayContactInfo()` (boxed output) |
-| `clsSearchContactScreen` | Validates int ID input via `int.TryParse` loop, displays found contact |
-| `clsAddNewContactScreen` | Collects all contact fields; catches `DateTime.Parse` failures |
-| `clsUpdateContactScreen` | Loads contact by ID, fills updated fields, calls `Save()` |
-| `clsDeleteScreen` | Parses ID, calls `clsContact.DeleteContact()` |
-| `clsGetAllContactsScreen` | Displays contacts in formatted table with helper `GetDateOnly()` |
-| `clsIsContactExitsScreen` | Checks and displays bool result for contact existence |
-| `clsCountryByNameScreen` | Finds and displays a country by name |
-| `clsFindCountryByIDScreen` | Finds and displays a country by ID |
-| `clsAddCountryScreen` | Collects country fields, calls `clsCountries.Save()` |
-| `clsUpdateCountryScreen` | Loads country, collects updated fields, calls `Save()` |
-| `clsDeleteCountryScreen` | Parses ID, calls `clsCountries.DeleteCountry()` |
-| `clsGetAllCountriesScreen` | Displays all countries in a formatted table |
-| `clsCheckExistenceScreen'` | Checks country existence by name |
-| `clsIsCountryExistByIDScreen` | Checks country existence by ID |
+| Class | Form Name | Purpose |
+|---|---|---|
+| `Program` | — | Entry point — calls `Application.Run(new frmMain())` |
+| `frmMain` | Main Window | Displays all contacts in a `DataGridView`; hosts search, add, edit, and delete workflows |
+| `Add_EditContactForm` | Add / Edit Window | Dual-mode form: collects fields for a new contact (Add mode) or pre-fills existing data for editing (Edit mode) |
 
 ---
 
@@ -451,18 +446,20 @@ These validations happen at the DAL level, providing a second defensive layer.
 
 ### 7.3 Presentation Layer Input Handling
 
-| Screen | Input | Handling |
+| Form / Control | Input | Validation Mechanism |
 |---|---|---|
-| `clsSearchContactScreen` | Contact ID (int) | `while (!int.TryParse(Console.ReadLine(), out ID))` — loops until valid integer entered |
-| `clsAddNewContactScreen` | Date of Birth | `try { DateOfBirth = DateTime.Parse(...); } catch { DateOfBirth = default; }` — catches parse errors with fallback |
-| `clsAddNewContactScreen` | Country ID | `Convert.ToInt32(Console.ReadLine())` — throws if non-integer (not yet guarded) |
-| `clsMainMenu` | Menu option | `try { Option = Convert.ToInt32(...); } catch { Option = -2; }` — invalid input sets option to -2 (out of range, loop repeats) |
-| `clsCountryMenu` | Menu option | Same pattern as `clsMainMenu` |
-| `clsDeleteScreen` | Contact ID | `int.TryParse(Console.ReadLine(), out int ContactID)` — defaults to 0 on failure |
-| `clsUpdateContactScreen` | Contact ID | `Convert.ToInt32(Console.ReadLine())` — not yet guarded |
+| `frmMain` → `tbSearch` | Contact ID (int) | `Validating` event: `int.TryParse` — if invalid, `ErrorProvider` shows inline error and focus is cancelled |
+| `frmMain` → `tbSearch` | Empty string | `TextChanged`: calls `LoadAllContacts()` to restore the full grid |
+| `Add_EditContactForm` → `tbFirstName`, `tbLastName`, `tbAddress` | Text | `TextBoxes_Validating`: if empty, `ErrorProvider` shows "This Field Is Required." and focus is cancelled |
+| `Add_EditContactForm` → `mtbEmail` | Masked email | `TextChanged`: only updates contact if `MaskCompleted` is `true` |
+| `Add_EditContactForm` → `mtbPhone` | Masked phone | `mtbPhone_Validating`: if `MaskCompleted == false`, `ErrorProvider` shows "Please enter valid Data!" |
+| `Add_EditContactForm` → `cbCountryName` | ComboBox selection | `cbCountryName_Validating`: if `SelectedItem == null` or empty, `ErrorProvider` flags the control |
+| `Add_EditContactForm` → `btnSave` | All fields | `CheckBeforeSave()`: gates save on non-empty FirstName, LastName, Address, Email, Phone, valid DOB, and selected Country |
+| `Add_EditContactForm` → `btnSave` | Confirmation | `MessageBox.Show(YesNo)`: user must confirm before the save is committed |
+| `frmMain` → Delete context menu | Confirmation | `MessageBox.Show(YesNo)`: user must confirm before deletion |
 
 > [!WARNING]
-> Some numeric input fields (e.g., CountryID in the Add/Update screens) use `Convert.ToInt32()` without a `try/catch` guard, which can throw a `FormatException` if the user enters non-numeric text. These are candidates for improvement with `int.TryParse`.
+> Some control-level `Validating` events use `e.Cancel = true` which traps focus on the control until valid input is entered. Ensure AutoValidate mode is set appropriately on the form to avoid unintended focus-trap behavior.
 
 ---
 
@@ -507,40 +504,59 @@ The `GetAllContacts` listing query performs an **INNER JOIN** between `Contacts`
 ## 9. Key Design Patterns & Decisions
 
 ### 1. Mode-Switching `Save()` Pattern
-Both `clsContact` and `clsCountries` expose a single `Save()` method that internally routes to either an add or update operation based on an `enMode` enum field. This gives the presentation layer a uniform, simple interface: just call `Save()` regardless of whether the object is new or existing.
+Both `clsContact` and `clsCountries` expose a single `Save()` method that internally routes to either an add or update operation based on an `enMode` enum field. The WinForms layer calls the same `Save()` regardless of whether the form is in Add or Edit mode.
 
 ```csharp
-// New contact → mode = Add
-clsContact contact = new clsContact(firstName, ...);
+// Add_EditContactForm — Add mode: contact object created with default public constructor
+clsContact contact = new clsContact();
+contact.FirstName = tbFirstName.Text;
+// ... populate fields ...
 contact.Save(); // internally calls AddContact()
 
-// Existing contact → mode = Update (set by private constructor from DB)
-clsContact contact = clsContact.GetContactById(id);
-contact.FirstName = "NewName";
+// Add_EditContactForm — Edit mode: contact loaded from DB via factory method
+clsContact contact = clsContact.GetContactById(contactId);
+contact.FirstName = tbFirstName.Text;
+// ... update fields ...
 contact.Save(); // internally calls UpdateContact()
 ```
 
-### 2. Private Constructor Factory Pattern
+### 2. Dual-Mode Form Pattern (`Add_EditContactForm`)
+A single form class serves as both the "Add New Contact" and "Edit Contact" screen. The form's mode is determined by the `ContactID` passed to its constructor:
+- `ContactID == -1` → **Add mode**: blank fields, `labNewFormState` shows "Add New Contact".
+- `ContactID > 0` → **Edit mode**: fields pre-populated from DB, `labNewFormState` shows "Edit Contact".
+
+```csharp
+// Opening in Add mode (from frmMain)
+new Add_EditContactForm(-1).ShowDialog();
+
+// Opening in Edit mode (from context menu)
+new Add_EditContactForm(selectedContactID).ShowDialog();
+```
+
+### 3. Private Constructor Factory Pattern
 `GetContactById()` and the `Find*` methods act as **factory methods**. They are the only way to obtain a fully-populated domain object (with a valid ID). The private constructor prevents external code from manually constructing an object that pretends to be a database record.
 
-### 3. Partial Class Decomposition of `clsContact`
+### 4. Partial Class Decomposition of `clsContact`
 The contact class is split into 6 partial class files, each covering one feature (Add, Update, Delete, GetAll, IsExist, core). This keeps each file focused and short while remaining a single C# class at compile time.
 
-### 4. One DAL Class Per Operation
+### 5. One DAL Class Per Operation
 Rather than one large repository class with many methods, each database operation has its own dedicated static class. This enforces a strict **Single Responsibility Principle** at the file level and makes the codebase easy to navigate.
 
-### 5. Centralized Connection Management via `clsDbSettings`
+### 6. Centralized Connection Management via `clsDbSettings`
 The `clsDbSettings.DbConnection` is a single shared `SqlConnection`. All DAL classes open and close this connection per operation inside `try/finally` blocks, making connection management predictable and safe.
 
-### 6. Scalar "T" Check Pattern for Existence Queries
+### 7. Scalar "T" Check Pattern for Existence Queries
 Instead of fetching full rows to check existence, the app uses a lightweight pattern:
 ```sql
 SELECT x = 'T' FROM Contacts WHERE ContactID = @ContactID
 ```
 `ExecuteScalar()` returns `"T"` if a row is found, `null` otherwise — a minimal round-trip check.
 
-### 7. `SCOPE_IDENTITY()` for New Record IDs
+### 8. `SCOPE_IDENTITY()` for New Record IDs
 After every INSERT, the query immediately fetches `SCOPE_IDENTITY()` in the same batch to retrieve the newly assigned primary key. This is returned as the new object's ID.
+
+### 9. `DataGridView` as the Central Data Hub
+The `DataGridView` in `frmMain` is the primary read surface. It is refreshed via `LoadAllContacts()` after every mutating operation (add, edit, delete) to ensure the displayed data always reflects the current database state.
 
 ---
 
@@ -549,14 +565,21 @@ After every INSERT, the query immediately fetches `SCOPE_IDENTITY()` in the same
 ### 10.1 Adding a New Contact
 
 ```
-User (console input)
-  │  Types: FirstName, LastName, Email, Phone, Address, DOB, CountryID, ImagePath
+User clicks the Add button (PictureBox) on frmMain
+  │  selectedContactID is reset to -1
   ▼
-clsAddNewContactScreen.ShowAddContactScreen()
-  │  Creates: new clsContact(firstName, ...) → _Mode = enMode.Add
-  │  Calls:   Contact.Save()
+Add_EditContactForm(ContactID: -1) is constructed
+  │  _Mode = enFormMode.Add
+  │  FillCountriesInDropDownList() → clsCountries.GetAllCountries() → populates cbCountryName
   ▼
-clsContact.Save()  [pUpdateContact.cs]
+User fills fields (FirstName, LastName, Email, Phone, Address, DOB, CountryName, Photo)
+  │  Each TextChanged / ValueChanged event updates the contact object's properties
+  │  cbCountryName_SelectedIndexChanged → clsCountries.FindCountryByName() → sets contact.CountryID
+  ▼
+User clicks Save → MessageBox confirms (Yes/No)
+  │  CheckBeforeSave() verifies all required fields are filled
+  ▼
+contact.Save()  [pUpdateContact.cs]
   │  case enMode.Add → calls AddContact()
   ▼
 clsContact.AddContact()  [pAddContact.cs]
@@ -577,8 +600,10 @@ clsContact.Save()
   │  Resets _Mode = enMode.Update
   │  Returns: true
   ▼
-clsAddNewContactScreen
-  └──► Displays: "Contact With ID {X} Has Been Inserted!"
+Add_EditContactForm
+  └──► MessageBox: "Contact saved successfully."
+frmMain.LoadAllContacts()
+  └──► DataGridView refreshed with updated contact list
 ```
 
 ---
@@ -586,79 +611,92 @@ clsAddNewContactScreen
 ### 10.2 Updating an Existing Contact
 
 ```
-User types Contact ID
+User right-clicks a row in DGV → selects "Edit"
+  │  selectedContactID is read from DGV.CurrentRow.Cells[0]
   ▼
-clsUpdateContactScreen.ShowUpdateScreen()
-  │  Calls: clsContact.GetContactById(ContactId)
+Add_EditContactForm(ContactID: selectedContactID) is constructed
+  │  _Mode = enFormMode.Edit
+  │  FillCountriesInDropDownList() → populates cbCountryName
+  │  LoadContactData() → clsContact.GetContactById(contactId)
   ▼
 clsContact.GetContactById()  [clsContact.cs]
   │  Calls: DataAccessForSearchContact.CheckContactOnDb(ref params)
-  ▼
-DataAccessForSearchContact.CheckContactOnDb()
-  │  Executes: SELECT * FROM Contacts WHERE ContactID = @ID
   │  Populates: ref FirstName, LastName, Email, Phone, Address, DOB, CountryID, ImagePath
-  │  Returns: true if record found
+  │  Returns: clsContact object with _Mode = enMode.Update
   ▼
-clsContact.GetContactById()
-  │  If found: returns new clsContact(id, ...) with _Mode = enMode.Update
-  │  If not found: returns null
+Add_EditContactForm
+  │  Pre-fills all controls with loaded data
+  │  Sets cbCountryName.Text via clsCountries.FindCountryByID(contact.CountryID).CountryName
+  │  LoadPicture() → loads photo from ImagePath if it exists
   ▼
-clsUpdateContactScreen
-  │  If null → displays failure message
-  │  If found → calls FillToUpdateContactInfo(ref contact) [user types new values]
-  │  Calls: contact.Save()
+User edits fields → TextChanged / ValueChanged events update contact object properties
   ▼
-clsContact.Save()
+User clicks Save → MessageBox confirms (Yes/No)
+  │  CheckBeforeSave() verifies required fields
+  ▼
+contact.Save()  [pUpdateContact.cs]
   │  case enMode.Update → calls UpdateContact()
   ▼
 clsContact.UpdateContact()
   │  Calls: clsDataAccessUpdateContact.UpdateContactInDb(ContactID, ...)
-  ▼
-clsDataAccessUpdateContact.UpdateContactInDb()
   │  Executes: UPDATE Contacts SET ... WHERE ContactID = @ID
   │  Returns: true if rows affected > 0
   ▼
-clsUpdateContactScreen
-  └──► Displays: "Updated Successfully!" or "Failed To Update"
+Add_EditContactForm
+  └──► MessageBox: "Contact saved successfully." or "An error occurred..."
+frmMain.LoadAllContacts()
+  └──► DataGridView refreshed
 ```
 
 ---
 
-### 10.3 Adding a New Country (Duplicate Prevention)
+### 10.3 Searching a Contact by ID
 
 ```
-User types CountryName, Code, PhoneCode
+User types a number in tbSearch on frmMain
   ▼
-clsAddCountryScreen.ShowAddCountryScreen()
-  │  Creates: new clsCountries(name, code, phoneCode) → _mode = enMode.add
-  │  Calls:   country.Save()
+tbSearch_TextChanged fires
+  │  int.TryParse(tbSearch.Text, out int ContactID)
   ▼
-clsCountries.Save()
-  │  case enMode.add → calls AddNewCountry()
+clsContact.GetContactRecord(ContactID)  [clsContact.cs]
+  │  Validates int, delegates to DataAccessForSearchContact.ReturnContactRecordByID(ContactID)
   ▼
-clsCountries.AddNewCountry()
-  │  Calls: clsDataAccessForAddCountry.AddNewCountryToDb(name, code, phoneCode)
+DataAccessForSearchContact.ReturnContactRecordByID()
+  │  Executes: SELECT * FROM Contacts WHERE ContactID = @ID
+  │  Returns: DataTable (one row if found, empty if not)
   ▼
-clsDataAccessForAddCountry.AddNewCountryToDb()
-  │  ① Calls: IsCountryAlreadyExist(CountryName)
-  │        → clsDataAccessForCheckCountryByName.IsCountryExisitByName(name)
-  │        → SELECT R='T' WHERE LOWER(CountryName)=LOWER(@Name)
-  │  ② If exists → returns -1 immediately (no INSERT)
-  │  ③ If not exists → Opens DbConnection
-  │       Executes: INSERT INTO Countries(...) VALUES(...); SELECT SCOPE_IDENTITY()
-  │       Returns: new CountryID
-  ▼
-clsCountries.AddNewCountry()
-  │  Returns: true if ID ≠ -1
-  ▼
-clsCountries.Save()
-  │  Resets _mode = enMode.update
-  │  Returns: true
-  ▼
-clsAddCountryScreen
-  └──► Displays: "The New Country Has Been Inserted Successfully!" or "Failed To Insert!"
+frmMain
+  │  If DataTable not null → DGV.DataSource = dt  (grid shows one row)
+  └──► If null → MessageBox: "No contact found with the given ID."
+
+User clears tbSearch
+  └──► LoadAllContacts() restores the full contact list in DGV
 ```
 
 ---
 
-*Documentation generated on 2026-08-15 | Contacts App — ADO.NET 3-Tier Architecture Project*
+### 10.4 Deleting a Contact
+
+```
+User right-clicks a row in DGV → selects "Delete"
+  │  selectedContactID is read from DGV.CurrentRow.Cells[0]
+  ▼
+MessageBox: "Are you sure you want to delete this contact?" (Yes/No)
+  ▼
+User clicks Yes
+  ▼
+clsContact.DeleteContact(selectedContactID)  [pDeleteContact.cs]
+  │  Calls: clsDataAccessDeleteContact.DeleteContactFromDb(ContactID)
+  │  Executes: DELETE FROM Contacts WHERE ContactID = @ID
+  │  Returns: true if rows affected > 0
+  ▼
+frmMain
+  │  selectedContactID reset to -1
+  └──► MessageBox: "Contact deleted successfully."
+frmMain.LoadAllContacts()
+  └──► DataGridView refreshed with contact removed
+```
+
+---
+
+*Documentation updated on 2026-08-16 | Contacts App — ADO.NET 3-Tier Architecture (Windows Forms)*
