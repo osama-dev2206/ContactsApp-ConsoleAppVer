@@ -49,6 +49,7 @@
             cbCountryName = new ComboBox();
             linkLabelChangePhoto = new LinkLabel();
             LinkLabelDeletePhoto = new LinkLabel();
+            openFileDialog1 = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -223,7 +224,7 @@
             dtDateOfBirth.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtDateOfBirth.Format = DateTimePickerFormat.Short;
             dtDateOfBirth.Location = new Point(123, 284);
-            dtDateOfBirth.MinDate = new DateTime(2026, 8, 16, 0, 0, 0, 0);
+            dtDateOfBirth.MinDate = new DateTime(1990, 1, 1, 0, 0, 0, 0);
             dtDateOfBirth.Name = "dtDateOfBirth";
             dtDateOfBirth.Size = new Size(266, 27);
             dtDateOfBirth.TabIndex = 17;
@@ -258,23 +259,29 @@
             linkLabelChangePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkLabelChangePhoto.Location = new Point(408, 217);
             linkLabelChangePhoto.Name = "linkLabelChangePhoto";
-            linkLabelChangePhoto.Size = new Size(103, 18);
+            linkLabelChangePhoto.Size = new Size(73, 18);
             linkLabelChangePhoto.TabIndex = 20;
             linkLabelChangePhoto.TabStop = true;
-            linkLabelChangePhoto.Text = "change photo";
+            linkLabelChangePhoto.Text = "set photo";
             linkLabelChangePhoto.Visible = false;
+            linkLabelChangePhoto.LinkClicked += linkLabelChangePhoto_LinkClicked;
             // 
             // LinkLabelDeletePhoto
             // 
             LinkLabelDeletePhoto.AutoSize = true;
             LinkLabelDeletePhoto.Font = new Font("SF Pro Display", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LinkLabelDeletePhoto.Location = new Point(412, 253);
+            LinkLabelDeletePhoto.Location = new Point(399, 253);
             LinkLabelDeletePhoto.Name = "LinkLabelDeletePhoto";
             LinkLabelDeletePhoto.Size = new Size(94, 18);
             LinkLabelDeletePhoto.TabIndex = 21;
             LinkLabelDeletePhoto.TabStop = true;
             LinkLabelDeletePhoto.Text = "delete photo";
             LinkLabelDeletePhoto.Visible = false;
+            LinkLabelDeletePhoto.LinkClicked += LinkLabelDeletePhoto_LinkClicked;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Add_EditContactForm
             // 
@@ -332,5 +339,6 @@
         private ComboBox cbCountryName;
         private LinkLabel linkLabelChangePhoto;
         private LinkLabel LinkLabelDeletePhoto;
+        private OpenFileDialog openFileDialog1;
     }
 }

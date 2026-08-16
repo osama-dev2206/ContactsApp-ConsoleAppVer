@@ -32,7 +32,7 @@ namespace Contacts_App___Data_Access_Layer
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("CountryID", CountryID);
-            if (ImagePath != null || ImagePath != string.Empty)
+            if (ImagePath != null && ImagePath != string.Empty)
             {
                 cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
             }

@@ -11,7 +11,7 @@ namespace Contacts_App
 {
     public partial class Add_EditContactForm : Form
     {
-        clsContact ? contact = new clsContact(); // object to fill to add new contact or to get assign contact object  to update 
+        clsContact? contact = new clsContact(); // object to fill to add new contact or to get assign contact object  to update 
         enum enFormMode : byte { Add = 1, Edit = 2 }
         enFormMode _Mode = enFormMode.Add;
 
@@ -25,12 +25,15 @@ namespace Contacts_App
             if (ContactID == -1)
             {
                 _Mode = enFormMode.Add; // contact isn't on db 
-                this.linkLabelChangePhoto.Text = "Add New Contact";
+                this.labNewFormState.Text = "Add New Contact";
+                this.linkLabelChangePhoto.Visible = true; 
             }
             else
             {
                 _Mode = enFormMode.Edit; // contact is on db and we want to edit it
                 this.linkLabelChangePhoto.Text = "Edit Contact";
+                LoadPicture();
+                LoadContactData(); 
             }
 
         }
@@ -38,6 +41,7 @@ namespace Contacts_App
         private void Add_EditContactForm_Load(object sender, EventArgs e)
         {
             FillCountriesInDropDownList();
+            this.dtDateOfBirth.Value = DateTime.Now; //set default value 
         }
 
         private void FillCountriesInDropDownList()// to fill the combobox with all countries from the database
@@ -49,15 +53,24 @@ namespace Contacts_App
             }
         }
 
+        void LoadPicture()
+        {
+            if(!String.IsNullOrEmpty(this.contact.ImagePath) && Path.Exists(this.contact.ImagePath) )
+            {
+                this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
+                this.LinkLabelDeletePhoto.Visible = true;
+                this.linkLabelChangePhoto.Visible = true;
+            }
+        }
 
         // Edit Contact ///
         private void LoadContactData()
         {
-            if( _Mode == enFormMode.Edit)
+            if (_Mode == enFormMode.Edit)
             {
-                if ( clsContact.GetContactById(contact.ContactID) !=null)
+                if (clsContact.GetContactById(contact.ContactID) != null)
                 {
-                    contact = clsContact.GetContactById(this.contactId); 
+                    contact = clsContact.GetContactById(this.contactId);
                     this.tbFirstName.Text = contact.FirstName;
                     this.tbLastName.Text = contact.LastName;
                     this.mtbEmail.Text = contact.Email;
@@ -66,7 +79,20 @@ namespace Contacts_App
                     this.dtDateOfBirth.Value = contact.DateOfBirth;
                     this.cbCountryName.SelectedItem = clsCountries.FindCountryByID(contact.CountryID);
 
+                    if(this.contact.ImagePath != "") // there is image to display
+                    {
+                        this.LinkLabelDeletePhoto.Visible= true;
+                        this.linkLabelChangePhoto.Visible = true;
+                    }
+                    else // no image  
+                    {
+                        this.linkLabelChangePhoto.Visible = true;
+                        this.LinkLabelDeletePhoto .Visible = false;
+                    }
+
                 }
+                else
+                    contact = null;
 
             }
 
@@ -139,8 +165,12 @@ namespace Contacts_App
             if (MessageBox.Show("Are you sure you want to save these changes?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 == DialogResult.Yes)
             {
-                if (CheckBeforeSave() )
-                    contact.Save();
+                if (CheckBeforeSave())
+                    
+                    if(contact.Save()) MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("An error occurred while saving the contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 else
                     MessageBox.Show("Please fill in all required fields before saving.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -154,6 +184,30 @@ namespace Contacts_App
             this.Close();
         }
 
+        private void linkLabelChangePhoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Title = "Select a photo";
+
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
+            openFileDialog1.Multiselect = false;
+
+            openFileDialog1.FileName = "Photo.png"; 
+
+            if (openFileDialog1.ShowDialog() ==DialogResult.OK)
+            {
+                this.contact.ImagePath = openFileDialog1.FileName;
+
+                this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
+                contact.ImagePath = openFileDialog1.FileName; // update the contact's image path    
+            }
+
+        }
+
+        private void LinkLabelDeletePhoto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.contact.ImagePath = "";
+
+        }
 
 
     }
