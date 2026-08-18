@@ -92,7 +92,10 @@ namespace Contacts_App
                     this.mtbPhone.Text = contact.Phone;
                     this.tbAddress.Text = contact.Address;
                     this.dtDateOfBirth.Value = contact.DateOfBirth;
-                    cbCountryName.Text = clsCountries.FindCountryByID(contact.CountryID).CountryName.Trim();
+
+                    ChangeThePhoneMaskAccordingToCountry(clsCountries.FindCountryByID(this.contact.CountryID).Code);
+
+                    cbCountryName.SelectedIndex = cbCountryName.FindString(clsCountries.FindCountryByID(contact.CountryID).CountryName);
                 }
                 else
                 {
@@ -128,7 +131,7 @@ namespace Contacts_App
 
         private void mtbPhone_TextChanged(object sender, EventArgs e)
         {
-            if ((mtbPhone.MaskFull && !String.IsNullOrEmpty(mtbPhone.Text)))
+            if ((mtbPhone.MaskCompleted && !String.IsNullOrEmpty(mtbPhone.Text)))
                 contact.Phone = mtbPhone.Text;
         }
 
@@ -170,7 +173,6 @@ namespace Contacts_App
             }
         }
 
-
         private void cbCountryName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cbCountryName.SelectedIndex != -1 && cbCountryName != null && cbCountryName.SelectedItem != null)
@@ -191,7 +193,8 @@ namespace Contacts_App
             if (
            !String.IsNullOrEmpty(this.tbFirstName.Text) &&
             !String.IsNullOrEmpty(this.tbLastName.Text) && !String.IsNullOrEmpty(this.tbAddress.Text) && !String.IsNullOrEmpty(this.mtbEmail.Text)
-            && !String.IsNullOrEmpty(this.mtbPhone.Text) && this.dtDateOfBirth.Value != null && this.cbCountryName.SelectedItem != null)
+            && !String.IsNullOrEmpty(this.mtbPhone.Text) && this.mtbPhone.MaskCompleted
+            && this.dtDateOfBirth.Value != null && this.cbCountryName.SelectedItem != null)
             {
                 return true;
             }
@@ -233,6 +236,8 @@ namespace Contacts_App
 
                         //After saving the contact, we can change the form mode to Edit and update the form title and label text accordingly
                         UpdateTitleState();
+                        this.linkLabelChangePhoto.Visible = true;
+                        this.LinkLabelDeletePhoto.Visible= true;
                         this._Mode = enFormMode.Edit;
                     }
                     else
@@ -266,6 +271,8 @@ namespace Contacts_App
 
                 this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
                 contact.ImagePath = openFileDialog1.FileName; // update the contact's image path    
+                this.LinkLabelDeletePhoto.Visible = true;
+
             }
 
         }
@@ -274,6 +281,7 @@ namespace Contacts_App
         {
             this.contact.ImagePath = "";
             pictureBox1.Image = null;
+            this.LinkLabelDeletePhoto.Visible = false; 
         }
 
 
@@ -336,14 +344,6 @@ namespace Contacts_App
             e.Cancel = false; // allow the form to close
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

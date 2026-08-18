@@ -58,7 +58,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(382, 34);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(154, 170);
@@ -247,7 +246,6 @@
             label7.Size = new Size(124, 23);
             label7.TabIndex = 18;
             label7.Text = "Country Name";
-            label7.Click += label7_Click;
             // 
             // cbCountryName
             // 
