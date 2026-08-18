@@ -22,20 +22,20 @@ namespace Contacts_App
         public Add_EditContactForm(int ContactID)
         {
             InitializeComponent();
-   
+
             this.contactId = ContactID;
 
-            if (ContactID == -1)
+            if (ContactID == -1) //ADD 
             {
                 _Mode = enFormMode.Add; // contact isn't on db 
-                this.labNewFormState.Text = "Add New Contact";
+                this.UpdateTitleState();
                 this.linkLabelChangePhoto.Visible = true;
                 FillCountriesInDropDownList();
             }
-            else
+            else  // contact is on db and we want to edit it
             {
-                _Mode = enFormMode.Edit; // contact is on db and we want to edit it
-                this.labNewFormState.Text = "Edit Contact";
+                _Mode = enFormMode.Edit;
+                this.UpdateTitleState();
                 FillCountriesInDropDownList();
                 LoadContactData();
                 LoadPicture();
@@ -47,7 +47,7 @@ namespace Contacts_App
         // Load Form 
         private void Add_EditContactForm_Load(object sender, EventArgs e)
         {
-            
+
             this.dtDateOfBirth.Value = DateTime.Now; //set default value 
         }
 
@@ -66,7 +66,7 @@ namespace Contacts_App
             {
                 this.pictureBox1.Image = Image.FromFile(this.contact.ImagePath);
                 this.LinkLabelDeletePhoto.Visible = true;
-                this.linkLabelChangePhoto.Visible = true;
+                this.linkLabelChangePhoto.Visible = true; //allow user to change his pfp 
             }
             else // no image 
             {
@@ -77,7 +77,7 @@ namespace Contacts_App
 
 
 
-        // Edit Contact ///
+        // Load Contact Data to edit ///
         private void LoadContactData()
         {
             if (_Mode == enFormMode.Edit)
@@ -98,6 +98,7 @@ namespace Contacts_App
                 {
                     MessageBox.Show("The contact does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     contact = null;
+                    this.Close(); // close the form if the contact does not exist
                 }
 
 
@@ -106,7 +107,7 @@ namespace Contacts_App
         }
 
 
-        // ADD NEW CONTACT /// 
+        //  ADD/ EDIT CONTACT /// 
         private void tbFirstName_TextChanged(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(tbFirstName.Text))
@@ -143,14 +144,42 @@ namespace Contacts_App
                 contact.DateOfBirth = dtDateOfBirth.Value;
         }
 
+        private void ChangeThePhoneMaskAccordingToCountry(string CountryCode)
+        {
+            switch (CountryCode.ToUpper())
+            {
+                case "US":
+                    this.mtbPhone.Mask = "\\(\\+\\1\\) 0000000000";
+                    break;
+
+                case "GB":
+                    this.mtbPhone.Mask = "\\(\\+\\4\\4\\) 0000000000";
+                    break;
+
+                case "CA":
+                    this.mtbPhone.Mask = "\\(\\+\\1\\) 0000000000";
+                    break;
+
+                case "EG":
+                    this.mtbPhone.Mask = "\\(\\+\\2\\0\\) 0000000000";
+                    break;
+
+                case "DE":
+                    this.mtbPhone.Mask = "\\(\\+\\4\\9\\) 00000000000";
+                    break;
+            }
+        }
+
+
         private void cbCountryName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cbCountryName.SelectedIndex != -1 && cbCountryName != null && cbCountryName.SelectedItem != null)
             {
-                clsCountries c =  clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()); // find the country object by name to get the country id 
+                clsCountries c = clsCountries.FindCountryByName(cbCountryName.SelectedItem.ToString()); // find the country object by name to get the country id 
                 if (c != null)
                 {
                     this.contact.CountryID = c.CountryID;
+                    ChangeThePhoneMaskAccordingToCountry(c.Code);
                 }
 
             }
@@ -170,6 +199,21 @@ namespace Contacts_App
             return false;
         }
 
+        private void UpdateTitleState()
+        {
+            if (this._Mode == enFormMode.Add)
+            {
+                this.Text = "Add New Contact";
+                this.labNewFormState.Text = "Add New Contact";
+            }
+            else if (this._Mode == enFormMode.Edit)
+            {
+                this.Text = "Edit Contact";
+                this.labNewFormState.Text = "Edit Contact";
+            }
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -180,7 +224,17 @@ namespace Contacts_App
                 if (CheckBeforeSave())
                 {
 
-                    if (contact.Save()) MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (contact.Save()) // after saving new contact we make the mode to update 
+                    {
+                        if (this._Mode == enFormMode.Add)
+                            MessageBox.Show("Contact saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (this._Mode == enFormMode.Edit)
+                            MessageBox.Show("Contact updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //After saving the contact, we can change the form mode to Edit and update the form title and label text accordingly
+                        UpdateTitleState();
+                        this._Mode = enFormMode.Edit;
+                    }
                     else
                         MessageBox.Show("An error occurred while saving the contact.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -282,6 +336,14 @@ namespace Contacts_App
             e.Cancel = false; // allow the form to close
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

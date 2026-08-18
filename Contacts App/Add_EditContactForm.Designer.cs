@@ -135,7 +135,7 @@
             // 
             tbLastName.BorderStyle = BorderStyle.None;
             tbLastName.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbLastName.Location = new Point(149, 120);
+            tbLastName.Location = new Point(155, 120);
             tbLastName.Name = "tbLastName";
             tbLastName.PlaceholderText = "Enter Your Last Name";
             tbLastName.Size = new Size(214, 23);
@@ -178,7 +178,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(40, 210);
+            label5.Location = new Point(38, 323);
             label5.Name = "label5";
             label5.Size = new Size(59, 23);
             label5.TabIndex = 12;
@@ -186,7 +186,7 @@
             // 
             // mtbPhone
             // 
-            mtbPhone.Location = new Point(151, 210);
+            mtbPhone.Location = new Point(158, 321);
             mtbPhone.Mask = "\\(\\+\\2\\0\\)\\ 0000000000";
             mtbPhone.Name = "mtbPhone";
             mtbPhone.Size = new Size(211, 27);
@@ -198,7 +198,7 @@
             // 
             tbAddress.BorderStyle = BorderStyle.None;
             tbAddress.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbAddress.Location = new Point(149, 249);
+            tbAddress.Location = new Point(148, 226);
             tbAddress.Name = "tbAddress";
             tbAddress.PlaceholderText = " Enter Your Address";
             tbAddress.Size = new Size(214, 23);
@@ -210,7 +210,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label3.Location = new Point(34, 249);
+            label3.Location = new Point(33, 226);
             label3.Name = "label3";
             label3.Size = new Size(70, 23);
             label3.TabIndex = 15;
@@ -220,7 +220,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(6, 286);
+            label6.Location = new Point(24, 370);
             label6.Name = "label6";
             label6.Size = new Size(111, 23);
             label6.TabIndex = 16;
@@ -231,7 +231,7 @@
             dtDateOfBirth.CalendarFont = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtDateOfBirth.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtDateOfBirth.Format = DateTimePickerFormat.Short;
-            dtDateOfBirth.Location = new Point(123, 284);
+            dtDateOfBirth.Location = new Point(141, 368);
             dtDateOfBirth.MinDate = new DateTime(1990, 1, 1, 0, 0, 0, 0);
             dtDateOfBirth.Name = "dtDateOfBirth";
             dtDateOfBirth.Size = new Size(266, 27);
@@ -242,11 +242,12 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label7.Location = new Point(0, 340);
+            label7.Location = new Point(0, 269);
             label7.Name = "label7";
             label7.Size = new Size(124, 23);
             label7.TabIndex = 18;
             label7.Text = "Country Name";
+            label7.Click += label7_Click;
             // 
             // cbCountryName
             // 
@@ -254,7 +255,7 @@
             cbCountryName.FlatStyle = FlatStyle.Popup;
             cbCountryName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cbCountryName.FormattingEnabled = true;
-            cbCountryName.Location = new Point(127, 335);
+            cbCountryName.Location = new Point(130, 268);
             cbCountryName.Name = "cbCountryName";
             cbCountryName.Size = new Size(266, 28);
             cbCountryName.Sorted = true;
