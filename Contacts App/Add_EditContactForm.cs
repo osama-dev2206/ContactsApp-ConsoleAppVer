@@ -93,9 +93,10 @@ namespace Contacts_App
                     this.tbAddress.Text = contact.Address;
                     this.dtDateOfBirth.Value = contact.DateOfBirth;
 
-                    ChangeThePhoneMaskAccordingToCountry(clsCountries.FindCountryByID(this.contact.CountryID).Code);
-
+                    // the country sets the phone mask 
                     cbCountryName.SelectedIndex = cbCountryName.FindString(clsCountries.FindCountryByID(contact.CountryID).CountryName);
+
+                    mtbPhone.Text = contact.Phone;  
                 }
                 else
                 {
@@ -181,7 +182,7 @@ namespace Contacts_App
                 if (c != null)
                 {
                     this.contact.CountryID = c.CountryID;
-                    ChangeThePhoneMaskAccordingToCountry(c.Code);
+                     ChangeThePhoneMaskAccordingToCountry(c.Code);
                 }
 
             }
@@ -237,7 +238,7 @@ namespace Contacts_App
                         //After saving the contact, we can change the form mode to Edit and update the form title and label text accordingly
                         UpdateTitleState();
                         this.linkLabelChangePhoto.Visible = true;
-                        this.LinkLabelDeletePhoto.Visible= true;
+                        this.LinkLabelDeletePhoto.Visible= (!String.IsNullOrEmpty(contact.ImagePath));
                         this._Mode = enFormMode.Edit;
                     }
                     else
